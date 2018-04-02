@@ -4,13 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
     {
         path: '',
-        loadChildren: './layout/layout.module#LayoutModule',
-        canActivate: [true]
-    }
-    // { path: 'login', loadChildren: './login/login.module#LoginModule' },
+        loadChildren: './layout/layout.module#LayoutModule'
+    },
+    { path: 'login', loadChildren: './login/login.module#LoginModule' },
     // { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
     // { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
-    // { path: '**', redirectTo: 'not-found' }
+    { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
