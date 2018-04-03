@@ -13,6 +13,7 @@ export class RegistrationComponent implements OnInit {
   isRegistrationSuccess = false;
   isRegistrationFailed = false;
   errorMessage = '';
+  passwordStrength = '';
 
   constructor(private authService: AuthService) { }
 
@@ -58,14 +59,23 @@ export class RegistrationComponent implements OnInit {
       this.errorMessage = 'To register, you must agree with Terms and Conditions';
       this.isRegistrationFailed = true;
     }
-
-
   }
 
-  checkCheckboks() {
-
+  validatePassword() {
+    const strongRegex = new RegExp('^(?=.{10,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$', 'g');
+    const mediumRegex = new RegExp('^(?=.{9,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$', 'g');
+    const enoughRegex = new RegExp('(?=.{8,}).*', 'g');
+    const pwd = this.registrationData.password;
+    if (false === enoughRegex.test(pwd)) {
+      this.passwordStrength = 'Password too week. Please make stronger password, minimum 8 characters';
+    } else if (strongRegex.test(pwd)) {
+      this.passwordStrength = 'Strong!';
+    } else if (mediumRegex.test(pwd)) {
+      this.passwordStrength = 'Medium!';
+    } else {
+      this.passwordStrength = 'Password too week. Please make stronger password, minimum 8 characters';
+    }
   }
-
 }
 
 class LoginData {
