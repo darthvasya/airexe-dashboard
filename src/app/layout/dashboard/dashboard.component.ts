@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Ng4TwitterTimelineService } from 'ng4-twitter-timeline/lib/index';
+// import { Ng4TwitterTimelineService } from 'ng4-twitter-timeline/lib/index';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +8,8 @@ import { Ng4TwitterTimelineService } from 'ng4-twitter-timeline/lib/index';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private ng4TwitterTimelineService: Ng4TwitterTimelineService) { }
+  // private ng4TwitterTimelineService: Ng4TwitterTimelineService
+  constructor() { }
 
   ngOnInit() {
   }
