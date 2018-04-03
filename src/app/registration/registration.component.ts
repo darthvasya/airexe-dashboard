@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../shared/core/auth.service';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 
 @Component({
@@ -12,16 +12,20 @@ import 'rxjs/add/operator/filter';
 })
 export class RegistrationComponent implements OnInit {
   referalId: any;
+  confirm: any;
+  isConfirm = false;
+  isErrorConfirm = true;
 
   loginData = new LoginData('', '', false, false);
   registrationData = new LoginData('', '', false, false);
 
   isRegistrationSuccess = false;
   isRegistrationFailed = false;
+  isLoginFailed = false;
   errorMessage = '';
   passwordStrength = '';
 
-  constructor(private authService: AuthService, private route: ActivatedRoute) { }
+  constructor(private authService: AuthService, private route: ActivatedRoute, public router: Router) { }
 
   ngOnInit() {
     this.route.queryParams
@@ -29,21 +33,46 @@ export class RegistrationComponent implements OnInit {
       .subscribe(params => {
         this.referalId = params.referral;
       });
-  }
-
-  onLogging() {
-
-    this.authService.login(this.loginData)
-      .then(data => {
-        console.log(data);
-      })
-      .catch(err => {
-        console.error(err);
+    this.route.queryParams
+      .filter(params => params.confirm)
+      .subscribe(params => {
+        this.confirm = params.confirm;
+        this.authService.confirmEmail(this.confirm)
+          .then(data => {
+            this.isConfirm = true;
+          })
+          .catch(err => {
+            this.isErrorConfirm = true;
+          });
       });
   }
 
+  onLogging() {
+    this.clear();
+    console.log(this.validateEmail(this.loginData.email));
+    if (!this.validateEmail(this.loginData.email)) {
+      this.errorMessage = 'Email is invalid!';
+      this.isLoginFailed = true;
+    } else if (this.loginData.password.length === 0 || this.loginData.email.length === 0) {
+      this.errorMessage = 'Email or password can`t be empty!';
+      this.isLoginFailed = true;
+    } else if (this.loginData.password.length === 0) {
+      this.errorMessage = 'Password should be more than 8 characters!';
+      this.isLoginFailed = true;
+    } else {
+      this.authService.login(this.loginData)
+      .then(data => {
+        this.router.navigate(['/dashboard']);
+      })
+      .catch(err => {
+        this.errorMessage = 'Email or password is incorrect!';
+        this.isLoginFailed = true;
+      });
+    }
+  }
+
   onRegistration() {
-    this.isRegistrationFailed = false;
+    this.clear();
 
     if (this.registrationData.terms) {
       this.authService.registration(this.registrationData, this.referalId)
@@ -84,6 +113,21 @@ export class RegistrationComponent implements OnInit {
       this.passwordStrength = 'Password too week. Please make stronger password, minimum 8 characters';
     }
   }
+
+  clear() {
+    this.isRegistrationSuccess = false;
+    this.isRegistrationFailed = false;
+    this.errorMessage = '';
+    this.passwordStrength = '';
+    this.isLoginFailed = false;
+  }
+
+  validateEmail(email) {
+    // tslint:disable-next-line:max-line-length
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
 }
 
 class LoginData {

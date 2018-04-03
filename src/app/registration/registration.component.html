@@ -1,14 +1,14 @@
 <div class="container">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="false">Login</a>
+      <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#registration" role="tab" aria-controls="registration" aria-selected="true">Registration</a>
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#registration" role="tab" aria-controls="registration" aria-selected="false">Registration</a>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade" id="login" role="tabpanel" aria-labelledby="login-tab">
+    <div class="tab-pane fade  show active" id="login" role="tabpanel" aria-labelledby="login-tab">
       <form action="index.html">
         <div class="form-group">
           <label for="loginUsername">Login(Email)</label>
@@ -26,9 +26,12 @@
           <label class="form-check-label" for="loginCheck">Check me out</label>
         </div>
         <button type="button" class="btn btn-primary" (click)='onLogging()'>Login</button>
+
+        <strong>Forgor your password? Restore it here <a href="mailto:support@airexe.io" target="_blank">Contact support here</a></strong>
+
       </form>
     </div>
-    <div class="tab-pane fade show active" id="registration" role="tabpanel" aria-labelledby="registration-tab">
+    <div class="tab-pane fade" id="registration" role="tabpanel" aria-labelledby="registration-tab">
       <form action="index.html">
         <div class="form-group">
           <label for="registrationUsername">Login(Email)</label>
@@ -68,6 +71,25 @@
       <p>{{errorMessage}}</p>
       <hr>
       <p class="mb-0">If you don’t see emails form support@airexe.io, please check “SPAM” folders at your mailbox, it might be there.</p>
+    </div>
+
+    <div class="alert alert-danger" role="alert" [hidden]="!isLoginFailed">
+      <h4 class="alert-heading">Ooops!</h4>
+      <p>{{errorMessage}}</p>
+    </div>
+
+    <div class="alert alert-success" role="alert" [hidden]='isConfirm == false'>
+      <h4 class="alert-heading">Thank you!</h4>
+      <p>
+        Your account successfully activated.
+        Now you can log-in to AIREXE with your email address and password.</p>
+    </div>
+
+    <div class="alert alert-danger" role="alert" [hidden]='isErrorConfirm == true'>
+      <h4 class="alert-heading">Thank you!</h4>
+      <p>
+        We cannot find requested AIREXE user, or email confirmation link is expired.
+        Please try to register again. You should confirm your email address within 24 hours since registration</p>
     </div>
   </div>
 </div>

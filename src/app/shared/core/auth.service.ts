@@ -52,14 +52,15 @@ export class AuthService {
 
   login(loginInputData) {
 
-    const loginData = { credentialsType: 'password', login: loginInputData.username, password: sha256(loginInputData.password) };
+    const loginData = { credentialsType: 'password', login: loginInputData.email, password: sha256(loginInputData.password) };
 
     return new Promise((resolve, reject) => {
       this.http.put(`https://hubler.ru/barium/api/v1/credentials/signin`, loginData)
-        .map(res => res.json().data)
+        .map(res => res)
         // tslint:disable-next-line:no-shadowed-variable
         .subscribe((data) => {
-          this.saveUserInfo(data);
+          console.log(data);
+          this.saveUserInfo(data['_body']);
           resolve(data);
         }, (err) => {
           reject(err);
@@ -89,7 +90,25 @@ export class AuthService {
         }, (err) => {
           reject(err);
         });
-    });
+      });
     }
+
+    confirmEmail(token) {
+      const headers = new Headers();
+      headers.append('X-Auth-Token', token);
+      return new Promise((resolve, reject) => {
+        this.http.put(`https://hubler.ru/barium/api/v1/users/confirm`, null, {
+          headers: headers,
+        })
+          .map(res => res.json().data)
+          // tslint:disable-next-line:no-shadowed-variable
+          .subscribe((data) => {
+            resolve(data);
+          }, (err) => {
+            reject(err);
+          });
+      });
+    }
+
   }
 
