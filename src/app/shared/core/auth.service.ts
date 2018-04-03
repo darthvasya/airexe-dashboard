@@ -67,7 +67,8 @@ export class AuthService {
     });
   }
 
-  registration(registrationInputData) {
+  registration(registrationInputData, referal) {
+    let referalId = '';
 
     const registrationData = {
       'credentialsType': 'password',
@@ -75,8 +76,12 @@ export class AuthService {
       'password': sha256(registrationInputData.password)
     };
 
+    if (referal !== undefined && referal !== null) {
+      referalId = '?referalId=' + referal;
+    }
+
     return new Promise((resolve, reject) => {
-      this.http.post(`https://hubler.ru/barium/api/v1/users`, registrationData)
+      this.http.post(`https://hubler.ru/barium/api/v1/users` + referalId, registrationData)
         .map(res => res)
         // tslint:disable-next-line:no-shadowed-variable
         .subscribe((data) => {
@@ -85,6 +90,7 @@ export class AuthService {
           reject(err);
         });
     });
+    }
   }
 
 

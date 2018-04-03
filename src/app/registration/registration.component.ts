@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../shared/core/auth.service';
+
+import { ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/filter';
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  referalId: any;
+
   loginData = new LoginData('', '', false, false);
   registrationData = new LoginData('', '', false, false);
 
@@ -15,10 +21,14 @@ export class RegistrationComponent implements OnInit {
   errorMessage = '';
   passwordStrength = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
+    this.route.queryParams
+      .filter(params => params.referral)
+      .subscribe(params => {
+        this.referalId = params.referral;
+      });
   }
 
   onLogging() {
@@ -36,7 +46,7 @@ export class RegistrationComponent implements OnInit {
     this.isRegistrationFailed = false;
 
     if (this.registrationData.terms) {
-      this.authService.registration(this.registrationData)
+      this.authService.registration(this.registrationData, this.referalId)
       .then(data => {
         if (data['status'] === 200) {
           this.isRegistrationSuccess = true;
@@ -52,8 +62,6 @@ export class RegistrationComponent implements OnInit {
         }
 
         this.isRegistrationFailed = true;
-
-        console.error(err);
       });
     } else {
       this.errorMessage = 'To register, you must agree with Terms and Conditions';
