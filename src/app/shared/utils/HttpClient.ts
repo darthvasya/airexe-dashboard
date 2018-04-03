@@ -8,17 +8,17 @@ export class HttpClient {
   constructor(private http: Http, private authService: AuthService) {}
 
   createAuthorizationHeader(headers: Headers) {
-    headers.append('Authorization', this.authService.token);
+    headers.append('X-Auth-Token', this.authService.token);
   }
 
   get(url, search = {}) {
     const headers = new Headers();
-    // this.createAuthorizationHeader(headers);
+    this.createAuthorizationHeader(headers);
     return new Promise((resolve, reject) => {
       this.http.get(url, {
         headers: headers,
       })
-        .map(res => res.json().data)
+        .map(res => res)
         .subscribe((data) => {
           resolve(data);
         }, (err) => {
@@ -29,7 +29,7 @@ export class HttpClient {
 
   delete(url, search = {}) {
     const headers = new Headers();
-    // this.createAuthorizationHeader(headers);
+    this.createAuthorizationHeader(headers);
     return new Promise((resolve, reject) => {
       this.http.delete(url, {
         headers: headers,
@@ -45,7 +45,7 @@ export class HttpClient {
 
   post(url, data) {
     const headers = new Headers();
-    // this.createAuthorizationHeader(headers);
+    this.createAuthorizationHeader(headers);
     return new Promise((resolve, reject) => {
       this.http.post(url, data, {
         headers: headers,
@@ -62,7 +62,7 @@ export class HttpClient {
 
   put(url, data) {
     const headers = new Headers();
-    // this.createAuthorizationHeader(headers);
+    this.createAuthorizationHeader(headers);
     return new Promise((resolve, reject) => {
       this.http.put(url, data, {
         headers: headers,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { AuthService } from '../shared/core/auth.service';
 
@@ -24,6 +24,9 @@ export class RegistrationComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   passwordStrength = '';
+
+  @ViewChild('pass1') pass1: ElementRef;
+  @ViewChild('pass2') pass2: ElementRef;
 
   constructor(private authService: AuthService, private route: ActivatedRoute, public router: Router) { }
 
@@ -127,7 +130,15 @@ export class RegistrationComponent implements OnInit {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
+  showPassword() {
+    this.pass1.nativeElement.setAttribute('type', 'text');
+    this.pass2.nativeElement.setAttribute('type', 'text');
+  }
 
+  hidePassword() {
+    this.pass1.nativeElement.setAttribute('type', 'password');
+    this.pass2.nativeElement.setAttribute('type', 'password');
+  }
 }
 
 class LoginData {

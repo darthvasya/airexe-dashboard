@@ -60,7 +60,7 @@ export class AuthService {
         // tslint:disable-next-line:no-shadowed-variable
         .subscribe((data) => {
           console.log(data);
-          this.saveUserInfo(data['_body']);
+          this.saveUserInfo(JSON.parse(data['_body']));
           resolve(data);
         }, (err) => {
           reject(err);
