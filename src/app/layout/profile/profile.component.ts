@@ -13,3 +13,7 @@ export class ProfileComponent implements OnInit {
   }
 
 }
+
+enum Attributes {
+  Email = '1050'
+}
