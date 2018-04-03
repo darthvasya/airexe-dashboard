@@ -77,11 +77,9 @@ export class AuthService {
 
     return new Promise((resolve, reject) => {
       this.http.post(`https://hubler.ru/barium/api/v1/users`, registrationData)
-        .map(res => res.json().data)
+        .map(res => res)
         // tslint:disable-next-line:no-shadowed-variable
         .subscribe((data) => {
-          console.log(data);
-          this.saveUserInfo(data);
           resolve(data);
         }, (err) => {
           reject(err);

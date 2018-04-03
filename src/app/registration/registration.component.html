@@ -38,15 +38,31 @@
           <input type="password" class="form-control" id="registrationPassword" placeholder="Minimum 8 characters, latin letters and digits" [(ngModel)]='registrationData.password' name="password" required>
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="registrationCheckTerms">
+          <input type="checkbox" class="form-check-input" id="registrationCheckTerms" [(ngModel)]='registrationData.terms' name="terms">
           <label class="form-check-label" for="registrationCheckTerms">I agree with service terms and conditions </label>
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="registrationCheckEmail">
+          <input type="checkbox" class="form-check-input" id="registrationCheckEmail" [(ngModel)]='registrationData.getEmails' name="getEmails">
           <label class="form-check-label" for="registrationCheckEmail"> I agree to recieve news to my email</label>
         </div>
         <button type="button" class="btn btn-primary" (click)='onRegistration()'>Registration</button>
       </form>
     </div>
+
+    <div class="alert alert-success" role="alert" [hidden]="!isRegistrationSuccess">
+      <h4 class="alert-heading">Well done!</h4>
+      <p>Your account with login {{registrationData.email}} created. We sent you letter to {{registrationData.email}} with your email conformation link.
+        Please follow the link from email we sent to confirm it. After confirmation you can login to your account at AIREXE.io.</p>
+      <hr>
+      <p class="mb-0">If you don’t see emails form support@airexe.io, please check “SPAM” folders at your mailbox, it might be there.</p>
+    </div>
+
+    <div class="alert alert-danger" role="alert" [hidden]="!isRegistrationFailed">
+      <h4 class="alert-heading">Ooops!</h4>
+      <p>{{errorMessage}}</p>
+      <hr>
+      <p class="mb-0">If you don’t see emails form support@airexe.io, please check “SPAM” folders at your mailbox, it might be there.</p>
+    </div>
   </div>
 </div>
+
