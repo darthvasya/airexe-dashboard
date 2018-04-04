@@ -10,16 +10,16 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label text-white">Email Verified: </label>
             <div class="col-sm-8">
-                <span class="badge badge-success" [hidden]='userEmail.validation !== 1'>Yes</span>
-                <span class="badge badge-danger" [hidden]='userEmail.validation == 1'>No</span>
+                <span class="badge badge-success" [hidden]='userEmail.validation !== "1"'>Yes</span>
+                <span class="badge badge-danger" [hidden]='(userEmail.validation === "1")'>No</span>
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label text-white">Your account verification: </label>
             <div class="col-sm-8">
-                <span class="badge badge-success" [hidden]='!(userVerificationStatus == 3)'>Verified</span>
-                <span class="badge badge-danger" [hidden]='!(userVerificationStatus == 4)'>Rejected</span>
-                <span class="badge badge-warning" [hidden]='!(userVerificationStatus == 2 || userVerificationStatus == 1)'>Waiting verification</span>
+                <span class="badge badge-success" [hidden]='!(userVerificationStatus === "3")'>Verified</span>
+                <span class="badge badge-danger" [hidden]='!(userVerificationStatus === "4")'>Rejected</span>
+                <span class="badge badge-warning" [hidden]='!(userVerificationStatus === "2" || userVerificationStatus == "1")'>Waiting verification</span>
             </div>
         </div>
         <div class="form-group row">
@@ -36,7 +36,7 @@
 
 
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-sm-12">
         <h3>Copy from text -- text</h3> Click this button, it will copy the text from the input by referring to the <strong>text content</strong>
         <div class="input-group">
@@ -57,4 +57,4 @@
         </span>
         </div>
     </div>
-</div>
+</div> -->

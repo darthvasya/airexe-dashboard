@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 import { UserService } from './../../shared/core/user.service';
 
@@ -11,6 +16,8 @@ import * as _ from 'lodash';
 })
 export class PreVerificationComponent implements OnInit {
   userAttributes: any;
+
+  countryCodes: any;
 
   userData: any = {
     FirstName: new Attribute('', '', ''),
@@ -38,7 +45,7 @@ export class PreVerificationComponent implements OnInit {
 
   questions: any;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private http: Http) {
 
   }
 
@@ -49,6 +56,9 @@ export class PreVerificationComponent implements OnInit {
       this.fillData();
     })
     .catch(err => console.log(err));
+
+    this.getJSON().subscribe(data => this.countryCodes = data);
+
   }
 
   fillData() {
@@ -85,7 +95,13 @@ export class PreVerificationComponent implements OnInit {
   }
 
   send() {
-    console.log(Object.values(this.userData));
+    this.userService.updateAttributes(Object.values(this.userData)).then(data => console.log(data)).catch(err => console.log(err));
+  }
+
+  public getJSON(): Observable<any> {
+    return this.http.get('https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.json')
+                    .map((res: any) => res.json());
+
   }
 
 }
@@ -116,3 +132,5 @@ enum AttributeTypes {
 export class Attribute {
   constructor(private code: string, private value: string, private validation: string) {}
 }
+
+export const CountryCodes = {}

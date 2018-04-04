@@ -12,15 +12,7 @@ export class UserService {
     return this.http.get(`https://hubler.ru/barium/api/v1/users/` + this.authService.getUserInfo().userId);
   }
 
-  getAll(themeId) {
-    return this.http.get(`https://hubler.ru/barium/api/v1/credentials/signin`, {});
-  }
-
-  createOne(word) {
-    return this.http.post(`https://hubler.ru/barium/api/v1/credentials/signin`, null);
-  }
-
-  remove(wordId) {
-    return this.http.delete(`https://hubler.ru/barium/api/v1/credentials/signin`, {});
+  updateAttributes(data) {
+    return this.http.put(`https://hubler.ru/barium/api/v1/users/${this.authService.getUserInfo().userId}/attributes`, data);
   }
 }
