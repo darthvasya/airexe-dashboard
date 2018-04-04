@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   userEmail: Attribute = new Attribute('', '', '');
   userVerificationStatus = '';
   referalId = '';
-
+  copyHelp  = '';
   @ViewChild('link') link: HTMLElement;
 
   constructor(private userService: UserService) { }

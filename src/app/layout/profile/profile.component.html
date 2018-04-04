@@ -25,9 +25,10 @@
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label text-white">Your referal link:</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control text-dark" id="inputPassword" [(ngModel)]='referalId' name='referalId' disabled #link>
-                <span class="material-icons copy" (click)="copy()">content_copy</span>
+                <input type="text" class="form-control text-dark" id="inputPassword" [(ngModel)]='referalId' name='referalId' disabled #link aria-describedby="copyHelp">
+                <span class="material-icons copy" ngxClipboard [cbContent]=''>content_copy</span>
             </div>
+            <small id="copyHelp" class="form-text text-muted mtm-10">{{copyHelp}}</small>
         </div>
     </form>
 </div>
