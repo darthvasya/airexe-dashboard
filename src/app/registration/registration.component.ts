@@ -4,6 +4,7 @@ import { AuthService } from '../shared/core/auth.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
+import { LoaderService } from './../shared/core/loader.service';
 
 @Component({
   selector: 'app-registration',
@@ -28,7 +29,8 @@ export class RegistrationComponent implements OnInit {
   @ViewChild('pass1') pass1: ElementRef;
   @ViewChild('pass2') pass2: ElementRef;
 
-  constructor(private authService: AuthService, private route: ActivatedRoute, public router: Router) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private loaderService: LoaderService, private authService: AuthService, private route: ActivatedRoute, public router: Router) { }
 
   ngOnInit() {
     this.route.queryParams
@@ -51,8 +53,9 @@ export class RegistrationComponent implements OnInit {
   }
 
   onLogging() {
+    this.loaderService.display(true);
     this.clear();
-    console.log(this.validateEmail(this.loginData.email));
+
     if (!this.validateEmail(this.loginData.email)) {
       this.errorMessage = 'Email is invalid!';
       this.isLoginFailed = true;
@@ -66,15 +69,18 @@ export class RegistrationComponent implements OnInit {
       this.authService.login(this.loginData)
       .then(data => {
         this.router.navigate(['/dashboard']);
+        this.loaderService.display(false);
       })
       .catch(err => {
         this.errorMessage = 'Email or password is incorrect!';
         this.isLoginFailed = true;
+        this.loaderService.display(false);
       });
     }
   }
 
   onRegistration() {
+    this.loaderService.display(true);
     this.clear();
 
     if (this.registrationData.terms) {
@@ -83,7 +89,7 @@ export class RegistrationComponent implements OnInit {
         if (data['status'] === 200) {
           this.isRegistrationSuccess = true;
         }
-        console.log(data);
+        this.loaderService.display(false);
       })
       .catch(err => {
         if (err['status'] === 409) {
@@ -92,12 +98,13 @@ export class RegistrationComponent implements OnInit {
         if (err['status'] === 400) {
           this.errorMessage = 'Inbound model is not validated';
         }
-
+        this.loaderService.display(false);
         this.isRegistrationFailed = true;
       });
     } else {
       this.errorMessage = 'To register, you must agree with Terms and Conditions';
       this.isRegistrationFailed = true;
+      this.loaderService.display(false);
     }
   }
 
