@@ -14,6 +14,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
 import { LoaderService } from './shared/core/loader.service';
 import { NotificationService } from './shared/core/notification.service';
+import { AuthService } from './shared/core/auth.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { NotificationService } from './shared/core/notification.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [AuthGuard, LoaderService, NotificationService],
+  providers: [AuthGuard, LoaderService, NotificationService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

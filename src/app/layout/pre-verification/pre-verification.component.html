@@ -133,42 +133,56 @@
                 </div>
                 <div class="form-group">
                     <label for="PassportPhoto" class="col-form-label">Passport/ID Photo: </label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="PassportPhoto" [(ngModel)]='userData.PassportPhoto.value' name='PassportPhoto'>
-                        <span class="input-group-btn">
-                            <button class="btn btn-default btn-blue">Upload</button>
-                        </span>
-                    </div>
+
                     <span class="badge badge-success" [hidden]='!(userData.PassportPhoto.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.PassportPhoto.validation == 2)'>Rejected</span>
                     <span class="badge badge-warning" [hidden]='!(userData.PassportPhoto.validation == 0)'>Waiting verification</span>
+
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-blue">View</button>
+                            <label class="btn btn-blue">
+                                Upload <input type="file" accept="image/*" (change)="changeListener($event, '1070')" hidden>
+                           </label>
+                        </span>
+                    </div>
+
+
                 </div>
                 <div class="form-group">
                     <label for="AddressPhoto" class="col-form-label">Address Photo: </label>
 
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="AddressPhoto" [(ngModel)]='userData.AddressPhoto.value' name='AddressPhoto'>
-                        <span class="input-group-btn">
-                            <button class="btn btn-default btn-blue">View</button>
-                            <button class="btn btn-default btn-blue">Upload</button>
-                        </span>
-                    </div>
                     <span class="badge badge-success" [hidden]='!(userData.AddressPhoto.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.AddressPhoto.validation == 2)'>Rejected</span>
                     <span class="badge badge-warning" [hidden]='!(userData.AddressPhoto.validation == 0)'>Waiting verification</span>
 
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-blue">View</button>
+                            <label class="btn btn-blue">
+                              Upload <input type="file" accept="image/*" (change)="changeListener($event, '1071')" hidden>
+                           </label>
+                        </span>
+                    </div>
+
+
                 </div>
                 <div class="form-group">
                     <label for="UserPhoto" class="col-form-label">User Photo: </label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="UserPhoto" [(ngModel)]='userData.UserPhoto.value' name='UserPhoto'>
-                        <span class="input-group-btn">
-                            <button class="btn btn-default btn-blue">View</button>
-                        </span>
-                    </div>
+
                     <span class="badge badge-success" [hidden]='!(userData.UserPhoto.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.UserPhoto.validation == 2)'>Rejected</span>
                     <span class="badge badge-warning" [hidden]='!(userData.UserPhoto.validation == 0)'>Waiting verification</span>
+
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-blue">View</button>
+                            <label class="btn btn-blue">
+                                Upload <input type="file" accept="image/x-png,image/jpeg"  (change)="changeListener($event, '1072')" hidden>
+                           </label>
+                        </span>
+                    </div>
+
                 </div>
             </div>
         </div>

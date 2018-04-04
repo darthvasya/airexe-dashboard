@@ -16,4 +16,15 @@ export class UserService {
   updateAttributes(data) {
     return this.http.put(`${environment.apiUrl}api/v1/users/${this.authService.getUserInfo().userId}/attributes`, data);
   }
+
+  createSourse(data) {
+    data.id = this.authService.getUserInfo().id;
+    data.userId = this.authService.getUserInfo().userId;
+
+    return this.http.post(`${environment.apiUrl}api/v1/users/${this.authService.getUserInfo().userId}/sources`, data);
+  }
+
+  getSourse() {
+
+  }
 }

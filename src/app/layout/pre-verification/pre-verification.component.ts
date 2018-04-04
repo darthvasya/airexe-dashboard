@@ -25,6 +25,10 @@ export class PreVerificationComponent implements OnInit {
   badSend = false;
   countryCodes: any = CountryCodes;
 
+  userImage: any;
+  passportImage: any;
+  addressImage: any;
+
   userData: any = {
     FirstName: new Attribute('', '', ''),
     Surname: new Attribute('', '', ''),
@@ -117,6 +121,52 @@ export class PreVerificationComponent implements OnInit {
     return this.http.get('country-codes.json')
                     .map((res: any) => res.json());
 
+  }
+
+  changeListener($event, type): void {
+
+    this.readThis($event.target, type);
+  }
+
+  readThis(inputValue: any, type): void {
+    this.loaderService.display(true);
+
+    const file: File = inputValue.files[0];
+    const myReader: FileReader = new FileReader();
+
+    const sourceObject = {
+      id: '',
+      userId: '',
+      sourceType: 0,
+      data: '',
+      createdDate: Date.UTC
+    };
+
+    myReader.onloadend = (e) => {
+      sourceObject.data = myReader.result.split(',')[1];
+      switch (type) {
+        case AttributeTypes.UserPhoto:
+          sourceObject.sourceType = 2;
+          break;
+        case AttributeTypes.AddressPhoto:
+          sourceObject.sourceType = 1;
+          break;
+        case AttributeTypes.PassportPhoto:
+          sourceObject.sourceType = 0;
+          break;
+      }
+
+      this.userService.createSourse(sourceObject).then(data => {
+        this.loaderService.display(false);
+        alert('Uploaded successfully');
+      }).catch(err => {
+        this.loaderService.display(false);
+        alert('Error when upload your file. Try once again later...');
+      });
+    };
+
+
+    myReader.readAsDataURL(file);
   }
 
 }
