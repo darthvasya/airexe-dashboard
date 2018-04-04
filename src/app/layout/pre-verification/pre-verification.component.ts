@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { UserService } from './../../shared/core/user.service';
 
+import { QuestionService } from './dynamic/question.service';
+
 import * as _ from 'lodash';
 
 @Component({
@@ -15,15 +17,28 @@ export class PreVerificationComponent implements OnInit {
   userData: any = {
     FirstName: new Attribute('', '', ''),
     Surname: new Attribute('', '', ''),
-    MiddleName: new Attribute('', '', '')
+    MiddleName: new Attribute('', '', ''),
+    Gender: new Attribute('', '', ''),
+    BirthDate: new Attribute('', '', ''),
+    CountryCode: new Attribute('', '', ''),
+    Zip: new Attribute('', '', ''),
+    State: new Attribute('', '', ''),
+    City: new Attribute('', '', ''),
+    Street: new Attribute('', '', ''),
+    House: new Attribute('', '', ''),
+    Flat: new Attribute('', '', ''),
+    PassportType: new Attribute('', '', '')
   };
+  questions: any[];
 
+  constructor(private userService: UserService, private questionService: QuestionService) {
 
-  constructor(private userService: UserService) { }
+  }
 
   ngOnInit() {
     this.userService.getUser().then((data) => {
       this.userData = JSON.parse(data['_body']);
+      this.questions = this.questionService.getQuestions(this.userData.attrs);
       this.fillData();
     })
     .catch(err => console.log(err));
@@ -33,11 +48,23 @@ export class PreVerificationComponent implements OnInit {
     this.userAttributes = this.userData.attrs;
     console.log(this.userAttributes);
 
-    this.userData.FirstName = _.find(this.userData.attrs, { 'code': AttributeTypes.FirstName });
-    this.userData.MiddleName = _.find(this.userData.attrs, { 'code': AttributeTypes.MiddleName });
     // tslint:disable-next-line:max-line-length
-    this.userData.Surname = _.find(this.userData.attrs, { 'code': AttributeTypes.Surname }) ? undefined : { code: AttributeTypes.Surname, value: '', validation: null};
-  }
+    this.userData.FirstName = _.find(this.userData.attrs, { 'code': AttributeTypes.FirstName }) === undefined ? { code: AttributeTypes.FirstName, value: '', validation: null} : _.find(this.userData.attrs, { 'code': AttributeTypes.FirstName });
+    // tslint:disable-next-line:max-line-length
+    this.userData.MiddleName = _.find(this.userData.attrs, { 'code': AttributeTypes.MiddleName }) === undefined ? { code: AttributeTypes.MiddleName, value: '', validation: null} : _.find(this.userData.attrs, { 'code': AttributeTypes.MiddleName });
+    // tslint:disable-next-line:max-line-length
+    this.userData.Surname = _.find(this.userData.attrs, { 'code': AttributeTypes.Surname }) === undefined ? { code: AttributeTypes.FirstName, value: '', validation: null} : _.find(this.userData.attrs, { 'code': AttributeTypes.Surname });
+    // tslint:disable-next-line:max-line-length
+    this.userData.Gender = _.find(this.userData.attrs, { 'code': AttributeTypes.Gender }) === undefined ? { code: AttributeTypes.Gender, value: '', validation: null} : _.find(this.userData.attrs, { 'code': AttributeTypes.Gender });
+    // tslint:disable-next-line:max-line-length
+    this.userData.BirthDate = _.find(this.userData.attrs, { 'code': AttributeTypes.BirthDate }) === undefined ? { code: AttributeTypes.BirthDate, value: '', validation: null} : _.find(this.userData.attrs, { 'code': AttributeTypes.BirthDate });
+    // tslint:disable-next-line:max-line-length
+    this.userData.CountryCode = _.find(this.userData.attrs, { 'code': AttributeTypes.CountryCode }) === undefined ? { code: AttributeTypes.CountryCode, value: '', validation: null} : _.find(this.userData.attrs, { 'code': AttributeTypes.CountryCode });
+ }
+
+
+
+
 }
 
 enum AttributeTypes {
