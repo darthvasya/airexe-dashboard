@@ -2,3 +2,8 @@
   text-align: center;
     margin: 0 auto;
 }
+.btn-blue {
+  background: #2b4a91;
+  border-radius: 0;
+  color: #fff;
+}

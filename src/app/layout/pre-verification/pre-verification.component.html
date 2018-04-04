@@ -1,11 +1,11 @@
-<div class="container-fluid">
+<div class="container-fluid bg-white">
   <form>
     <div class="row">
       <div class="col-6">
       <div class="form-group">
 
           <!-- <div class="col-sm-4"> -->
-            <label for="Name" class="col-form-label text-white">First name: </label>
+            <label for="Name" class="col-form-label">First name: </label>
             <input type="text" class="form-control" id="Name" [(ngModel)]='userData.FirstName.value' name='firstname'>
             <span class="badge badge-success" [hidden]='!(userData.FirstName.validation == 1)'>Verified</span>
             <span class="badge badge-danger" [hidden]='!(userData.FirstName.validation == 2)'>Rejected</span>
@@ -17,7 +17,7 @@
 
         <div class="form-group">
           <!-- <div class="col-sm-10"> -->
-              <label for="Surname" class="col-form-label text-white">Surname: </label>
+              <label for="Surname" class="col-form-label">Surname: </label>
             <input type="text" class="form-control" id="Surname"  [(ngModel)]='userData.Surname.value' name='Surname'>
             <span class="badge badge-success" [hidden]='!(userData.Surname.validation == 1)'>Verified</span>
             <span class="badge badge-danger" [hidden]='!(userData.Surname.validation == 2)'>Rejected</span>
@@ -28,7 +28,7 @@
 
 
         <div class="form-group">
-          <label for="BirthDate" class="col-form-label text-white">BirthDate: </label>
+          <label for="BirthDate" class="col-form-label">BirthDate: </label>
           <!-- <div class="col-sm-10"> -->
             <input type="date" class="form-control" id="Surname"  [(ngModel)]='userData.BirthDate.value' name='BirthDate'>
             <span class="badge badge-success" [hidden]='!(userData.BirthDate.validation == 1)'>Verified</span>
@@ -40,7 +40,7 @@
 
 
         <div class="form-group">
-          <label for="Zip" class="col-form-label text-white">Zip: </label>
+          <label for="Zip" class="col-form-label">Zip: </label>
           <!-- <div class="col-sm-10"> -->
             <input type="text" class="form-control" id="Zip"  [(ngModel)]='userData.Zip.value' name='Zip'>
             <span class="badge badge-success" [hidden]='!(userData.Zip.validation == 1)'>Verified</span>
@@ -52,7 +52,7 @@
 
 
         <div class="form-group">
-          <label for="City" class="col-form-label text-white">City: </label>
+          <label for="City" class="col-form-label">City: </label>
           <!-- <div class="col-sm-10"> -->
             <input type="text" class="form-control" id="City"  [(ngModel)]='userData.City.value' name='City'>
             <span class="badge badge-success" [hidden]='!(userData.City.validation == 1)'>Verified</span>
@@ -63,7 +63,7 @@
 
 
         <div class="form-group">
-          <label for="House" class="col-form-label text-white">House: </label>
+          <label for="House" class="col-form-label">House: </label>
           <!-- <div class="col-sm-10"> -->
             <input type="text" class="form-control" id="House"  [(ngModel)]='userData.House.value' name='House'>
             <span class="badge badge-success" [hidden]='!(userData.House.validation == 1)'>Verified</span>
@@ -73,7 +73,7 @@
         </div>
 
         <div class="form-group">
-          <label for="Flat" class="col-form-label text-white">Flat: </label>
+          <label for="Flat" class="col-form-label">Flat: </label>
           <!-- <div class="col-sm-10"> -->
             <input type="text" class="form-control" id="Flat"  [(ngModel)]='userData.Flat.value' name='Flat'>
             <span class="badge badge-success" [hidden]='!(userData.Flat.validation == 1)'>Verified</span>
@@ -84,7 +84,7 @@
 
 
         <div class="form-group">
-          <label for="PassportNumber" class="col-form-label text-white">PassportNumber: </label>
+          <label for="PassportNumber" class="col-form-label">PassportNumber: </label>
           <!-- <div class="col-sm-10"> -->
             <input type="text" class="form-control" id="PassportNumber"  [(ngModel)]='userData.PassportNumber.value' name='PassportNumber'>
             <span class="badge badge-success" [hidden]='!(userData.PassportNumber.validation == 1)'>Verified</span>
@@ -94,7 +94,7 @@
         </div>
 
         <div class="form-group">
-          <label for="PassportIssueDate" class="col-form-label text-white">PassportIssueDate: </label>
+          <label for="PassportIssueDate" class="col-form-label">PassportIssueDate: </label>
           <!-- <div class="col-sm-10"> -->
             <input type="date" class="form-control" id="PassportIssueDate"  [(ngModel)]='userData.PassportIssueDate.value' name='PassportIssueDate'>
             <span class="badge badge-success" [hidden]='!(userData.PassportIssueDate.validation == 1)'>Verified</span>
@@ -104,7 +104,7 @@
         </div>
 
         <div class="form-group">
-          <label for="PassportExpirationDate" class="col-form-label text-white">PassportExpirationDate: </label>
+          <label for="PassportExpirationDate" class="col-form-label">PassportExpirationDate: </label>
           <!-- <div class="col-sm-10"> -->
             <input type="date" class="form-control" id="PassportExpirationDate"  [(ngModel)]='userData.PassportExpirationDate.value' name='PassportExpirationDate'>
             <span class="badge badge-success" [hidden]='!(userData.PassportExpirationDate.validation == 1)'>Verified</span>
@@ -115,7 +115,7 @@
    </div>
 <div class="col-6">
     <div class="form-group">
-        <label for="MiddleName" class="col-form-label text-white">Middle Name: </label>
+        <label for="MiddleName" class="col-form-label">Middle Name: </label>
         <!-- <div class="col-sm-4"> -->
           <input type="text" class="form-control" id="MiddleName" [(ngModel)]='userData.MiddleName.value' name='MiddleName'>
           <span class="badge badge-success" [hidden]='!(userData.MiddleName.validation == 1)'>Verified</span>
@@ -124,7 +124,7 @@
         <!-- </div> -->
       </div>
       <div class="form-group">
-          <label for="Gender" class="col-form-label text-white">Gender: </label>
+          <label for="Gender" class="col-form-label">Gender: </label>
           <!-- <div class="col-sm-10"> -->
             <select class="form-control" id="Gender"  [(ngModel)]='userData.Gender.value' name='Gender'>
               <option value="1">Male</option>
@@ -136,7 +136,7 @@
           <!-- </div> -->
         </div>
         <div class="form-group">
-            <label for="CountryCode" class="col-form-label text-white">CountryCode: </label>
+            <label for="CountryCode" class="col-form-label">CountryCode: </label>
             <!-- <div class="col-sm-10"> -->
               <select class="form-control" id="CountryCode"  [(ngModel)]='userData.CountryCode.value' name='CountryCode'>
                   <option *ngFor="let code of countryCodes" [ngValue]="code['alpha-2']">
@@ -149,7 +149,7 @@
             <!-- </div> -->
           </div>
           <div class="form-group">
-              <label for="PassportType" class="col-form-label text-white">PassportType: </label>
+              <label for="PassportType" class="col-form-label">PassportType: </label>
               <!-- <div class="col-sm-10"> -->
                   <select class="form-control" id="PassportType"  [(ngModel)]='userData.PassportType.value' name='PassportType'>
                     <option value="1">International Passport</option>
@@ -163,7 +163,7 @@
               <!-- </div> -->
             </div>
             <div class="form-group">
-                <label for="Street" class="col-form-label text-white">Street: </label>
+                <label for="Street" class="col-form-label">Street: </label>
                 <!-- <div class="col-sm-10"> -->
                   <input type="text" class="form-control" id="Street"  [(ngModel)]='userData.Street.value' name='Street'>
                   <span class="badge badge-success" [hidden]='!(userData.Street.validation == 1)'>Verified</span>
@@ -172,7 +172,7 @@
                 <!-- </div> -->
               </div>
               <div class="form-group">
-                  <label for="State" class="col-form-label text-white">State: </label>
+                  <label for="State" class="col-form-label">State: </label>
                   <!-- <div class="col-sm-10"> -->
                     <input type="text" class="form-control" id="State"  [(ngModel)]='userData.State.value' name='State'>
                     <span class="badge badge-success" [hidden]='!(userData.State.validation == 1)'>Verified</span>
@@ -181,7 +181,7 @@
                   <!-- </div> -->
                 </div>
                 <div class="form-group">
-                    <label for="PassportPhoto" class="col-form-label text-white">PassportPhoto: </label>
+                    <label for="PassportPhoto" class="col-form-label">PassportPhoto: </label>
                     <!-- <div class="col-sm-10"> -->
                       <input type="text" class="form-control" id="PassportPhoto"  [(ngModel)]='userData.PassportPhoto.value' name='PassportPhoto'>
                       <span class="badge badge-success" [hidden]='!(userData.PassportPhoto.validation == 1)'>Verified</span>
@@ -191,7 +191,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="AddressPhoto" class="col-form-label text-white">AddressPhoto: </label>
+                    <label for="AddressPhoto" class="col-form-label">AddressPhoto: </label>
                     <!-- <div class="col-sm-10"> -->
                       <input type="text" class="form-control" id="AddressPhoto"  [(ngModel)]='userData.AddressPhoto.value' name='AddressPhoto'>
                       <span class="badge badge-success" [hidden]='!(userData.AddressPhoto.validation == 1)'>Verified</span>
@@ -201,7 +201,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="UserPhoto" class="col-form-label text-white">UserPhoto: </label>
+                    <label for="UserPhoto" class="col-form-label">UserPhoto: </label>
                     <!-- <div class="col-sm-10"> -->
                       <input type="text" class="form-control" id="UserPhoto"  [(ngModel)]='userData.UserPhoto.value' name='UserPhoto'>
                       <span class="badge badge-success" [hidden]='!(userData.UserPhoto.validation == 1)'>Verified</span>
@@ -212,7 +212,7 @@
   </div>
 </div>
 <div class="col-3 center">
-    <button class='btn btn-success' (click)='send()'>Send to verification</button>
+    <button class='btn btn-default btn-blue  mb-5' (click)='send()'>Send to verification</button>
 </div>
   </form>
 
