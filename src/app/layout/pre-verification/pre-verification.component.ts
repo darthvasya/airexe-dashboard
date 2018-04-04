@@ -25,25 +25,33 @@ export class PreVerificationComponent implements OnInit {
     Street: new Attribute('', '', ''),
     House: new Attribute('', '', ''),
     Flat: new Attribute('', '', ''),
-    PassportType: new Attribute('', '', '')
+    PassportType: new Attribute('', '', ''),
+    PassportNumber: new Attribute('', '', ''),
+    PassportIssueDate: new Attribute('', '', ''),
+    PassportExpirationDate: new Attribute('', '', ''),
+    PassportPhoto: new Attribute('', '', ''),
+    AddressPhoto: new Attribute('', '', ''),
+    UserPhoto: new Attribute('', '', '')
   };
+
+
+
   questions: any;
 
   constructor(private userService: UserService) {
+
+  }
+
+  ngOnInit() {
     this.userService.getUser().then((data) => {
-      this.userData = JSON.parse(data['_body']);
+      this.userAttributes = JSON.parse(data['_body']).attrs;
 
       this.fillData();
     })
     .catch(err => console.log(err));
   }
 
-  ngOnInit() {
-
-  }
-
   fillData() {
-    this.userAttributes = this.userData.attrs;
     console.log(this.userAttributes);
 
     this.userData.FirstName = this.checkAttribute(AttributeTypes.FirstName);
@@ -65,20 +73,20 @@ export class PreVerificationComponent implements OnInit {
     this.userData.PassportPhoto = this.checkAttribute(AttributeTypes.PassportPhoto);
     this.userData.AddressPhoto = this.checkAttribute(AttributeTypes.AddressPhoto);
     this.userData.UserPhoto = this.checkAttribute(AttributeTypes.UserPhoto);
-
-    console.log(this.userData);
  }
 
   checkAttribute(type) {
-    const attr = _.find(this.userData.attrs, { 'code': type });
-    console.log(attr);
+    const attr = _.find(this.userAttributes, { 'code': type });
     if ( attr !== undefined ) {
       return attr;
     } else {
-      return new Attribute('', '', '');
+      return {code: type, value: '', validation: '0'};
     }
   }
 
+  send() {
+    console.log(Object.values(this.userData));
+  }
 
 }
 
