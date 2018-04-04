@@ -1,4 +1,5 @@
 <div class="container bg-white profile">
+
     <form>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Email: </label>
@@ -25,25 +26,17 @@
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Your referal link:</label>
             <div class="col-sm-8">
-                <!-- <div class="input-group">
-
-                    <span class="material-icons"ngxClipboard [cbContent]='referalId' (click)="copied()">content_copy</span>
-                    <span class="input-group-btn">
-                        <button class="btn" type="button" [ngxClipboard]="referalId" (click)="copied()">Copy</button>
-                      </span>
-                </div> -->
                 <div class="input-group">
                     <input type="text" class="form-control text-dark" id="inputPassword" [(ngModel)]='referalId' name='referalId' readonly aria-describedby="copyHelp" #inputTarget>
                     <span class="input-group-btn">
                       <button class="btn btn-default" [class.btn-success]= "isCopied1" type="button" [ngxClipboard]="inputTarget" (cbOnSuccess)="isCopied1 = true">Copy</button>
                     </span>
-                  </div>
+                </div>
             </div>
-            <small id="copyHelp" class="form-text text-muted mtm-10">{{copyHelp}}</small>
+            <!-- <small id="copyHelp" class="form-text text-muted mtm-10">{{copyHelp}}</small> -->
         </div>
         <!-- <div class="col-3 center">
             <button class='btn btn-blue mt-3'>Change passwrod</button>
         </div> -->
     </form>
 </div>
-
