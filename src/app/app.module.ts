@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
+import { LoaderService } from './shared/core/loader.service';
+import { NotificationService } from './shared/core/notification.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, LoaderService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from './../../shared/core/user.service';
 
+import { LoaderService } from './../../shared/core/loader.service';
+
 import * as _ from 'lodash';
 
 @Component({
@@ -18,14 +20,20 @@ export class ProfileComponent implements OnInit {
   copyHelp  = '';
   isCopied1 = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private loaderService: LoaderService, private userService: UserService) { }
 
   ngOnInit() {
+    this.loaderService.display(true);
+
     this.userService.getUser().then((data) => {
       this.userData = JSON.parse(data['_body']);
       this.fillData();
+      this.loaderService.display(false);
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      this.loaderService.display(false);
+      console.log(err);
+    });
   }
 
   fillData() {

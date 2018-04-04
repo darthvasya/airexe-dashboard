@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { UserService } from './../../shared/core/user.service';
+import { LoaderService } from './../../shared/core/loader.service';
+import { NotificationService } from './../../shared/core/notification.service';
 
 import * as _ from 'lodash';
 
@@ -16,7 +18,8 @@ import * as _ from 'lodash';
 })
 export class PreVerificationComponent implements OnInit {
   userAttributes: any;
-
+  successSend = false;
+  badSend = false;
   countryCodes: any;
 
   userData: any = {
@@ -41,21 +44,25 @@ export class PreVerificationComponent implements OnInit {
     UserPhoto: new Attribute('', '', '')
   };
 
-
-
   questions: any;
 
-  constructor(private userService: UserService, private http: Http) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private notificationService: NotificationService, private loaderService: LoaderService, private userService: UserService, private http: Http) {
 
   }
 
   ngOnInit() {
+    this.loaderService.display(true);
     this.userService.getUser().then((data) => {
       this.userAttributes = JSON.parse(data['_body']).attrs;
 
       this.fillData();
+      this.loaderService.display(false);
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      this.loaderService.display(false);
+      console.log(err);
+    });
 
     this.getJSON().subscribe(data => this.countryCodes = data);
 
@@ -95,7 +102,19 @@ export class PreVerificationComponent implements OnInit {
   }
 
   send() {
-    this.userService.updateAttributes(Object.values(this.userData)).then(data => console.log(data)).catch(err => console.log(err));
+    this.successSend = false;
+    this.badSend = false;
+
+    this.loaderService.display(true);
+    this.userService.updateAttributes(Object.values(this.userData)).then(data => {
+      this.loaderService.display(false);
+      console.log(data);
+      this.successSend = true;
+    }).catch(err => {
+      this.badSend = true;
+      this.loaderService.display(false);
+      console.log(err);
+    });
   }
 
   public getJSON(): Observable<any> {
