@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   userVerificationStatus = '';
   referalId = '';
   copyHelp  = '';
-  @ViewChild('link') link: HTMLElement;
+  isCopied1 = false;
 
   constructor(private userService: UserService) { }
 
@@ -34,8 +34,11 @@ export class ProfileComponent implements OnInit {
     if (this.userEmail !== undefined) { this.userEmail.validation.toString(); }
     this.userVerificationStatus = this.userData.status.toString();
     this.referalId = 'https://airexe.io/register?referral=' + this.userData.referalId;
-
   }
+
+copied() {
+  this.copyHelp = 'ID copied';
+}
 
 }
 enum AttributeTypes {

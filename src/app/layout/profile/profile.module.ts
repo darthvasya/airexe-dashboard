@@ -11,6 +11,8 @@ import { UserService } from './../../shared/core/user.service';
 import { ProfileRoutingModule } from './profile-routing.module';
 
 import { ClipboardModule } from 'ngx-clipboard';
+// import { ClipboardModule }  from './clipboard/clipboard.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -23,6 +25,4 @@ import { ClipboardModule } from 'ngx-clipboard';
   providers: [UserService, HttpClient, AuthService]
 })
 export class ProfileModule {
-  isCopied1: boolean = false;
-  isCopied2: boolean = false;
 }

@@ -133,4 +133,4 @@ export class Attribute {
   constructor(private code: string, private value: string, private validation: string) {}
 }
 
-export const CountryCodes = {}
+export const CountryCodes = {};
