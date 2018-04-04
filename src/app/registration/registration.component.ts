@@ -16,6 +16,7 @@ export class RegistrationComponent implements OnInit {
   confirm: any;
   isConfirm = false;
   isErrorConfirm = true;
+  allowRegistration = false;
 
   loginData = new LoginData('', '', false, false);
   registrationData = new LoginData('', '', false, false);
@@ -114,12 +115,16 @@ export class RegistrationComponent implements OnInit {
     const enoughRegex = new RegExp('(?=.{8,}).*', 'g');
     const pwd = this.registrationData.password;
     if (false === enoughRegex.test(pwd)) {
+      this.allowRegistration = false;
       this.passwordStrength = 'Password too week. Please make stronger password, minimum 8 characters';
     } else if (strongRegex.test(pwd)) {
       this.passwordStrength = 'Strong!';
+      this.allowRegistration = true;
     } else if (mediumRegex.test(pwd)) {
       this.passwordStrength = 'Medium!';
+      this.allowRegistration = false;
     } else {
+      this.allowRegistration = false;
       this.passwordStrength = 'Password too week. Please make stronger password, minimum 8 characters';
     }
   }
@@ -130,6 +135,7 @@ export class RegistrationComponent implements OnInit {
     this.errorMessage = '';
     this.passwordStrength = '';
     this.isLoginFailed = false;
+    this.isConfirm = false;
   }
 
   validateEmail(email) {

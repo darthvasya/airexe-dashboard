@@ -100,7 +100,7 @@ export class AuthService {
         this.http.put(`https://hubler.ru/barium/api/v1/users/confirm`, null, {
           headers: headers,
         })
-          .map(res => res.json().data)
+          .map(res => res)
           // tslint:disable-next-line:no-shadowed-variable
           .subscribe((data) => {
             resolve(data);

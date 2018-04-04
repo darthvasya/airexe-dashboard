@@ -2,14 +2,20 @@
     <div class="col-5 center">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+                <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true" (click)='clear()'>Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#registration" role="tab" aria-controls="registration" aria-selected="false">Registration</a>
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#registration" role="tab" aria-controls="registration" aria-selected="false" (click)='clear()'>Registration</a>
             </li>
         </ul>
+
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade  show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+          <div class="alert alert-success " role="alert " [hidden]='isConfirm == false'>
+            <h4 class="alert-heading ">Thank you!</h4>
+            <p>
+                Your account successfully activated. Now you can log-in to AIREXE with your email address and password.</p>
+        </div>
+          <div class="tab-pane fade  show active" id="login" role="tabpanel" aria-labelledby="login-tab">
                 <form action="index.html">
                     <div class="form-group">
                         <label for="loginUsername">Login(Email)</label>
@@ -21,10 +27,10 @@
                         <input type="password" class="form-control" id="loginPassword" placeholder="Minimum 8 characters, latin letters and digits" [(ngModel)]='loginData.password' name="password" required #pass1>
                         <img class="eye" src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" id="eye" (mousedown)="showPassword()" (mouseup)="hidePassword()" />
                     </div>
-                    <div class="form-check mtm-10">
+                    <!-- <div class="form-check mtm-10">
                         <input type="checkbox" class="form-check-input" id="loginCheck">
-                        <label class="form-check-label" for="loginCheck">Check me out</label>
-                    </div>
+                        <label class="form-check-label" for="loginCheck">Keep me signed in</label>
+                    </div> -->
                     <button type="button" class="btn mt-10  btn-login" (click)='onLogging()'>Login</button>
 
                     <strong class="hint mt-10">Forgor your password? Restore it here <a class="link" href="mailto:support@airexe.io" target="_blank">Contact support here</a></strong>
@@ -53,7 +59,7 @@
                         <input type="checkbox" class="form-check-input" id="registrationCheckEmail" [(ngModel)]='registrationData.getEmails' name="getEmails">
                         <label class="form-check-label" for="registrationCheckEmail">I agree to receive news to my email</label>
                     </div>
-                    <button type="button " class="btn mt-10 " (click)='onRegistration()' [disabled]='registrationData.password.length < 8'>Registration</button>
+                    <button type="button " class="btn mt-10 " (click)='onRegistration()' (keypress)='validatePassword()' [disabled]='!allowRegistration'>Registration</button>
                 </form>
             </div>
 
@@ -73,12 +79,6 @@
             <div class="alert alert-danger " role="alert " [hidden]="!isLoginFailed ">
                 <h4 class="alert-heading ">Ooops!</h4>
                 <p>{{errorMessage}}</p>
-            </div>
-
-            <div class="alert alert-success " role="alert " [hidden]='isConfirm == false'>
-                <h4 class="alert-heading ">Thank you!</h4>
-                <p>
-                    Your account successfully activated. Now you can log-in to AIREXE with your email address and password.</p>
             </div>
 
             <div class="alert alert-danger " role="alert " [hidden]='isErrorConfirm == true'>
