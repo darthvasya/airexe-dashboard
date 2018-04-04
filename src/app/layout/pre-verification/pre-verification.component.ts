@@ -95,7 +95,7 @@ export class PreVerificationComponent implements OnInit {
   }
 
   send() {
-    console.log(Object.values(this.userData));
+    this.userService.updateAttributes(Object.values(this.userData)).then(data => console.log(data)).catch(err => console.log(err));
   }
 
   public getJSON(): Observable<any> {

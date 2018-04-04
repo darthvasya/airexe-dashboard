@@ -67,7 +67,7 @@ export class HttpClient {
       this.http.put(url, data, {
         headers: headers,
       })
-        .map(res => res.json().data)
+        .map(res => res)
         // tslint:disable-next-line:no-shadowed-variable
         .subscribe((data) => {
           resolve(data);
