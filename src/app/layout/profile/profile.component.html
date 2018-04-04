@@ -26,17 +26,16 @@
             <label for="inputPassword" class="col-sm-2 col-form-label text-white">Your referal link:</label>
             <div class="col-sm-8">
                 <!-- <div class="input-group">
-                    <input type="text" class="form-control text-dark" id="inputPassword" [(ngModel)]='referalId' name='referalId' disabled aria-describedby="copyHelp">
+
                     <span class="material-icons"ngxClipboard [cbContent]='referalId' (click)="copied()">content_copy</span>
                     <span class="input-group-btn">
                         <button class="btn" type="button" [ngxClipboard]="referalId" (click)="copied()">Copy</button>
                       </span>
                 </div> -->
                 <div class="input-group">
-                    <input type="text" class="form-control" [(ngModel)]="referalId" placeholder="content will be copy after click the copy button"
-                      #inputTarget>
+                    <input type="text" class="form-control text-dark" id="inputPassword" [(ngModel)]='referalId' name='referalId' readonly aria-describedby="copyHelp" #inputTarget>
                     <span class="input-group-btn">
-                      <button class="btn btn-default" [class.btn-success]= "isCopied1" type="button" [ngxClipboard]="referalId" (cbOnSuccess)="isCopied1 = true">copy</button>
+                      <button class="btn btn-default" [class.btn-success]= "isCopied1" type="button" [ngxClipboard]="inputTarget" (cbOnSuccess)="isCopied1 = true">Copy</button>
                     </span>
                   </div>
             </div>
