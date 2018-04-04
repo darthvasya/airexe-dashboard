@@ -12,7 +12,7 @@ import * as _ from 'lodash';
 export class ProfileComponent implements OnInit {
   userData: any;
   userAttributes: Attribute[];
-  userEmail: Attribute = new Attribute('', '', '');
+  userEmail = {code: '', value: '', validation: ''};
   userVerificationStatus = '';
   referalId = '';
 
@@ -31,8 +31,10 @@ export class ProfileComponent implements OnInit {
   fillData() {
     this.userAttributes = this.userData.attrs;
     this.userEmail = _.find(this.userData.attrs, { 'code': AttributeTypes.Email });
-    this.userVerificationStatus = this.userData.status;
+    if (this.userEmail !== undefined) { this.userEmail.validation.toString(); }
+    this.userVerificationStatus = this.userData.status.toString();
     this.referalId = 'https://airexe.io/register?referral=' + this.userData.referalId;
+
   }
 
 }
@@ -41,5 +43,5 @@ enum AttributeTypes {
 }
 
 export class Attribute {
-  constructor(private Code: string, private Value: string, private Validation: string) {}
+  constructor(private code: string, private value: string, private validation: string) {}
 }
