@@ -1,21 +1,21 @@
-<div class="container profile">
+<div class="container bg-white profile">
     <form>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label text-white">Email: </label>
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email: </label>
             <div class="col-sm-8">
                 <input type="text" readonly class="form-control text-dark" id="staticEmail" [(ngModel)]='userEmail.value' name="userEmail">
                 <!-- <input type="text" readonly class="form-control text-dark" [(ngModel)]='referalId' name='referalId' disabled> -->
             </div>
         </div>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label text-white">Email Verified: </label>
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email Verified: </label>
             <div class="col-sm-8">
                 <span class="badge badge-success" [hidden]='userEmail.validation !== "1"'>Yes</span>
                 <span class="badge badge-danger" [hidden]='(userEmail.validation === "1")'>No</span>
             </div>
         </div>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label text-white">Your account verification: </label>
+            <label for="staticEmail" class="col-sm-2 col-form-label">Your account verification: </label>
             <div class="col-sm-8">
                 <span class="badge badge-success" [hidden]='!(userVerificationStatus === "3")'>Verified</span>
                 <span class="badge badge-danger" [hidden]='!(userVerificationStatus === "4")'>Rejected</span>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label text-white">Your referal link:</label>
+            <label for="inputPassword" class="col-sm-2 col-form-label">Your referal link:</label>
             <div class="col-sm-8">
                 <!-- <div class="input-group">
 
@@ -40,6 +40,9 @@
                   </div>
             </div>
             <small id="copyHelp" class="form-text text-muted mtm-10">{{copyHelp}}</small>
+        </div>
+        <div class="col-3 center">
+            <button class='btn btn-blue mt-3'>Change passwrod</button>
         </div>
     </form>
 </div>

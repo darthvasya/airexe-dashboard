@@ -4,3 +4,22 @@
     top: -30px;
     left: 95%;
 }
+.profile {
+  margin-top: 20px;
+}
+.btn-blue {
+  background: #2b4a91;
+  border-radius: 0;
+  color: #fff;
+}
+.center {
+  text-align: center;
+    margin: 0 auto;
+}
+.btn-default {
+  background: #f8f9fa;
+  border: 1px solid #ced4da;
+}
+.btn-success {
+  background: #28a745;
+}
