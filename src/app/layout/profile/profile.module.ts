@@ -10,13 +10,19 @@ import { UserService } from './../../shared/core/user.service';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 
+import { ClipboardModule } from 'ngx-clipboard';
+
 @NgModule({
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    FormsModule
+    FormsModule,
+    ClipboardModule
   ],
   declarations: [ProfileComponent],
   providers: [UserService, HttpClient, AuthService]
 })
-export class ProfileModule { }
+export class ProfileModule {
+  isCopied1: boolean = false;
+  isCopied2: boolean = false;
+}

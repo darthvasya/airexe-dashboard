@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from './../../shared/core/user.service';
 
 import * as _ from 'lodash';
@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   userVerificationStatus = '';
   referalId = '';
 
+  @ViewChild('link') link: HTMLElement;
 
   constructor(private userService: UserService) { }
 
@@ -35,7 +36,6 @@ export class ProfileComponent implements OnInit {
   }
 
 }
-
 enum AttributeTypes {
   Email = '1050'
 }
