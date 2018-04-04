@@ -1,5 +1,31 @@
 <div class="container">
-        <app-dynamic-form [questions]="questions"></app-dynamic-form>
+  <form>
+    <div class="form-group row">
+      <label for="Name" class="col-sm-2 col-form-label">First name: </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="Name" [(ngModel)]='userData.FirstName.value' name='firstname'>
+        <span class="badge badge-success" [hidden]='!(userData.FirstName.validation == 1)'>Verified</span>
+        <span class="badge badge-danger" [hidden]='!(userData.FirstName.validation == 2)'>Rejected</span>
+        <span class="badge badge-warning" [hidden]='!(userData.FirstName.validation == 0)'>Waiting verification</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="MiddleName" class="col-sm-2 col-form-label">Middle Name: </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="MiddleName" [(ngModel)]='userData.MiddleName.value' name='MiddleName'>
+        <span class="badge badge-success" [hidden]='!(userData.MiddleName.validation == 1)'>Verified</span>
+        <span class="badge badge-danger" [hidden]='!(userData.MiddleName.validation == 2)'>Rejected</span>
+        <span class="badge badge-warning" [hidden]='!(userData.MiddleName.validation == 0)'>Waiting verification</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="Surname" class="col-sm-2 col-form-label">Surname: </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="Surname"  [(ngModel)]='userData.Surname.value' name='Surname'>
+        <span class="badge badge-success" [hidden]='!(userData.Surname.validation == 1)'>Verified</span>
+        <span class="badge badge-danger" [hidden]='!(userData.Surname.validation == 2)'>Rejected</span>
+        <span class="badge badge-warning" [hidden]='!(userData.Surname.validation == 0)'>Waiting verification</span>
+      </div>
+    </div>
+  </form>
 </div>
-
-
