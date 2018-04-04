@@ -3,35 +3,35 @@
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                    <label for="Name" class="col-form-label">*First name: </label>
+                    <label for="Name" class="col-form-label">First name:<span class='required'> *</span> </label>
                     <input type="text" class="form-control" id="Name" [(ngModel)]='userData.FirstName.value' name='firstname' required>
                     <span class="badge badge-success" [hidden]='!(userData.FirstName.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.FirstName.validation == 2)'>Rejected</span>
                     <span class="badge badge-warning" [hidden]='!(userData.FirstName.validation == 0)'>Waiting verification</span>
                 </div>
                 <div class="form-group">
-                    <label for="Surname" class="col-form-label">*Surname: </label>
+                    <label for="Surname" class="col-form-label">Surname:<span class='required'> *</span> </label>
                     <input type="text" class="form-control" id="Surname" [(ngModel)]='userData.Surname.value' name='Surname'>
                     <span class="badge badge-success" [hidden]='!(userData.Surname.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.Surname.validation == 2)'>Rejected</span>
                     <span class="badge badge-warning" [hidden]='!(userData.Surname.validation == 0)'>Waiting verification</span>
                 </div>
                 <div class="form-group">
-                    <label for="BirthDate" class="col-form-label">*Birth Date: </label>
+                    <label for="BirthDate" class="col-form-label">Birth Date:<span class='required'> *</span> </label>
                     <input type="date" class="form-control" id="Surname" [(ngModel)]='userData.BirthDate.value' name='BirthDate'>
                     <span class="badge badge-success" [hidden]='!(userData.BirthDate.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.BirthDate.validation == 2)'>Rejected</span>
                     <span class="badge badge-warning" [hidden]='!(userData.BirthDate.validation == 0)'>Waiting verification</span>
                 </div>
                 <div class="form-group">
-                    <label for="Zip" class="col-form-label">*Zip: </label>
+                    <label for="Zip" class="col-form-label">Zip:<span class='required'> *</span> </label>
                     <input type="text" class="form-control" id="Zip" [(ngModel)]='userData.Zip.value' name='Zip'>
                     <span class="badge badge-success" [hidden]='!(userData.Zip.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.Zip.validation == 2)'>Rejected</span>
                     <span class="badge badge-warning" [hidden]='!(userData.Zip.validation == 0)'>Waiting verification</span>
                 </div>
                 <div class="form-group">
-                    <label for="City" class="col-form-label">*City: </label>
+                    <label for="City" class="col-form-label">City:<span class='required'> *</span> </label>
                     <input type="text" class="form-control" id="City" [(ngModel)]='userData.City.value' name='City'>
                     <span class="badge badge-success" [hidden]='!(userData.City.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.City.validation == 2)'>Rejected</span>
@@ -40,7 +40,7 @@
 
 
                 <div class="form-group">
-                    <label for="House" class="col-form-label">*House: </label>
+                    <label for="House" class="col-form-label">House:<span class='required'> *</span> </label>
                     <input type="text" class="form-control" id="House" [(ngModel)]='userData.House.value' name='House'>
                     <span class="badge badge-success" [hidden]='!(userData.House.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.House.validation == 2)'>Rejected</span>
@@ -55,14 +55,14 @@
                     <span class="badge badge-warning" [hidden]='!(userData.Flat.validation == 0)'>Waiting verification</span>
                 </div>
                 <div class="form-group">
-                    <label for="PassportNumber" class="col-form-label">*Passport/ID Number: </label>
+                    <label for="PassportNumber" class="col-form-label">Passport/ID Number:<span class='required'> *</span> </label>
                     <input type="text" class="form-control" id="PassportNumber" [(ngModel)]='userData.PassportNumber.value' name='PassportNumber'>
                     <span class="badge badge-success" [hidden]='!(userData.PassportNumber.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.PassportNumber.validation == 2)'>Rejected</span>
                     <span class="badge badge-warning" [hidden]='!(userData.PassportNumber.validation == 0)'>Waiting verification</span>
                 </div>
                 <div class="form-group">
-                    <label for="PassportIssueDate" class="col-form-label">*Passport/ID IssueDate: </label>
+                    <label for="PassportIssueDate" class="col-form-label">Passport/ID IssueDate:<span class='required'> *</span> </label>
                     <input type="date" class="form-control" id="PassportIssueDate" [(ngModel)]='userData.PassportIssueDate.value' name='PassportIssueDate'>
                     <span class="badge badge-success" [hidden]='!(userData.PassportIssueDate.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.PassportIssueDate.validation == 2)'>Rejected</span>
@@ -85,7 +85,7 @@
                     <span class="badge badge-warning" [hidden]='!(userData.MiddleName.validation == 0)'>Waiting verification</span>
                 </div>
                 <div class="form-group">
-                    <label for="Gender" class="col-form-label">*Gender: </label>
+                    <label for="Gender" class="col-form-label">Gender:<span class='required'> *</span> </label>
                     <select class="form-control" id="Gender" [(ngModel)]='userData.Gender.value' name='Gender'>
               <option value="1">Male</option>
               <option value="0">Female</option>
@@ -95,7 +95,7 @@
                     <span class="badge badge-warning" [hidden]='!(userData.Gender.validation == 0)'>Waiting verification</span>
                 </div>
                 <div class="form-group">
-                    <label for="CountryCode" class="col-form-label">*Country Code: </label>
+                    <label for="CountryCode" class="col-form-label">Country Code:<span class='required'> *</span> </label>
                     <select class="form-control" id="CountryCode" [(ngModel)]='userData.CountryCode.value' name='CountryCode'>
                   <option *ngFor="let code of countryCodes" [ngValue]="code['alpha-2']">
                       {{ code.name }}
@@ -106,7 +106,7 @@
                     <span class="badge badge-warning" [hidden]='!(userData.CountryCode.validation == 0)'>Waiting verification</span>
                 </div>
                 <div class="form-group">
-                    <label for="PassportType" class="col-form-label">*Passport/ID Type: </label>
+                    <label for="PassportType" class="col-form-label">Passport/ID Type:<span class='required'> *</span> </label>
                     <select class="form-control" id="PassportType" [(ngModel)]='userData.PassportType.value' name='PassportType'>
                     <option value="1">International Passport</option>
                     <option value="2">National Passport</option>
@@ -118,7 +118,7 @@
                     <span class="badge badge-warning" [hidden]='!(userData.PassportType.validation == 0)'>Waiting verification</span>
                 </div>
                 <div class="form-group">
-                    <label for="Street" class="col-form-label">*Street: </label>
+                    <label for="Street" class="col-form-label">Street:<span class='required'> *</span> </label>
                     <input type="text" class="form-control" id="Street" [(ngModel)]='userData.Street.value' name='Street'>
                     <span class="badge badge-success" [hidden]='!(userData.Street.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.Street.validation == 2)'>Rejected</span>

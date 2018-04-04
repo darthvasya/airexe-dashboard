@@ -3,6 +3,8 @@ import 'rxjs/add/operator/map';
 import {Http, Headers} from '@angular/http';
 import {Router} from '@angular/router';
 
+import { environment } from './../../../environments/environment.prod';
+
 import * as sha256 from 'sha256';
 
 @Injectable()
@@ -50,12 +52,17 @@ export class AuthService {
     this.router.navigate(['/dashboard']);
   }
 
+  logout() {
+    localStorage.removeItem('user-info');
+    this.navigateToRegistration();
+  }
+
   login(loginInputData) {
 
     const loginData = { credentialsType: 'password', login: loginInputData.email, password: sha256(loginInputData.password) };
 
     return new Promise((resolve, reject) => {
-      this.http.put(`https://hubler.ru/barium/api/v1/credentials/signin`, loginData)
+      this.http.put(`${environment.apiUrl}api/v1/credentials/signin`, loginData)
         .map(res => res)
         // tslint:disable-next-line:no-shadowed-variable
         .subscribe((data) => {
@@ -82,7 +89,7 @@ export class AuthService {
     }
 
     return new Promise((resolve, reject) => {
-      this.http.post(`https://hubler.ru/barium/api/v1/users` + referalId, registrationData)
+      this.http.post(`${environment.apiUrl}api/v1/users` + referalId, registrationData)
         .map(res => res)
         // tslint:disable-next-line:no-shadowed-variable
         .subscribe((data) => {
@@ -97,7 +104,7 @@ export class AuthService {
       const headers = new Headers();
       headers.append('X-Auth-Token', token);
       return new Promise((resolve, reject) => {
-        this.http.put(`https://hubler.ru/barium/api/v1/users/confirm`, null, {
+        this.http.put(`${environment.apiUrl}api/v1/users/confirm`, null, {
           headers: headers,
         })
           .map(res => res)

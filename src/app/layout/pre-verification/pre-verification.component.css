@@ -7,3 +7,8 @@
   border-radius: 0;
   color: #fff;
 }
+
+.required {
+  color: red;
+  font-size: 20px;
+}

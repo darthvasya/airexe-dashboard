@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { UserService } from './../../shared/core/user.service';
 
+import { UserService } from './../../shared/core/user.service';
 import { LoaderService } from './../../shared/core/loader.service';
+import { AuthService } from './../../shared/core/auth.service';
 
 import * as _ from 'lodash';
 
@@ -20,7 +21,7 @@ export class ProfileComponent implements OnInit {
   copyHelp  = '';
   isCopied1 = false;
 
-  constructor(private loaderService: LoaderService, private userService: UserService) { }
+  constructor(private loaderService: LoaderService, private userService: UserService, private authService: AuthService) { }
 
   ngOnInit() {
     this.loaderService.display(true);
@@ -41,7 +42,7 @@ export class ProfileComponent implements OnInit {
     this.userEmail = _.find(this.userData.attrs, { 'code': AttributeTypes.Email });
     if (this.userEmail !== undefined) { this.userEmail.validation.toString(); }
     this.userVerificationStatus = this.userData.status.toString();
-    this.referalId = 'https://airexe.io/register?referral=' + this.userData.referalId;
+    this.referalId = 'https://airexe.io/register?referral=' + this.authService.getUserInfo().id;
   }
 
 copied() {

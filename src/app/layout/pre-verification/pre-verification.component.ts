@@ -1,9 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+// tslint:disable-next-line:import-blacklist
+import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+
+import { CountryCodes } from './country-codes';
 
 import { UserService } from './../../shared/core/user.service';
 import { LoaderService } from './../../shared/core/loader.service';
@@ -20,7 +23,7 @@ export class PreVerificationComponent implements OnInit {
   userAttributes: any;
   successSend = false;
   badSend = false;
-  countryCodes: any;
+  countryCodes: any = CountryCodes;
 
   userData: any = {
     FirstName: new Attribute('', '', ''),
@@ -61,16 +64,11 @@ export class PreVerificationComponent implements OnInit {
     })
     .catch(err => {
       this.loaderService.display(false);
-      console.log(err);
     });
-
-    this.getJSON().subscribe(data => this.countryCodes = data);
 
   }
 
   fillData() {
-    console.log(this.userAttributes);
-
     this.userData.FirstName = this.checkAttribute(AttributeTypes.FirstName);
     this.userData.MiddleName = this.checkAttribute(AttributeTypes.MiddleName);
     this.userData.Surname = this.checkAttribute(AttributeTypes.Surname);
@@ -108,17 +106,15 @@ export class PreVerificationComponent implements OnInit {
     this.loaderService.display(true);
     this.userService.updateAttributes(Object.values(this.userData)).then(data => {
       this.loaderService.display(false);
-      console.log(data);
       this.successSend = true;
     }).catch(err => {
       this.badSend = true;
       this.loaderService.display(false);
-      console.log(err);
     });
   }
 
   public getJSON(): Observable<any> {
-    return this.http.get('https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.json')
+    return this.http.get('country-codes.json')
                     .map((res: any) => res.json());
 
   }
@@ -151,5 +147,3 @@ enum AttributeTypes {
 export class Attribute {
   constructor(private code: string, private value: string, private validation: string) {}
 }
-
-export const CountryCodes = {};
