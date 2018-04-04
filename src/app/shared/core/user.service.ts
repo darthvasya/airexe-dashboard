@@ -4,6 +4,8 @@ import { HttpClient } from '../utils/HttpClient';
 import { AuthService } from './auth.service';
 
 import { environment } from './../../../environments/environment.prod';
+import { ResponseContentType } from '@angular/http';
+import { saveAs } from 'file-saver/FileSaver';
 
 @Injectable()
 export class UserService {
@@ -24,7 +26,20 @@ export class UserService {
     return this.http.post(`${environment.apiUrl}api/v1/users/${this.authService.getUserInfo().userId}/sources`, data);
   }
 
-  getSourse() {
+  getSourse(id) {
+
+    return this.http.download(`${environment.apiUrl}api/v1/sources/${id}`).then((data) => {
+            const blob = new Blob([data], {type: 'text/plain'});
+            console.log(blob);
+            // const fileURL = URL.createObjectURL(blob);
+            // console.log(fileURL);
+
+            // saveAs(blob, 's.txt');
+
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   }
 }

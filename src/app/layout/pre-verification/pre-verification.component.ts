@@ -64,6 +64,12 @@ export class PreVerificationComponent implements OnInit {
       this.userAttributes = JSON.parse(data['_body']).attrs;
 
       this.fillData();
+
+      // tslint:disable-next-line:no-shadowed-variable
+      this.userService.getSourse(this.userData.PassportPhoto.value).then((data) => {
+        console.log(data);
+      });
+
       this.loaderService.display(false);
     })
     .catch(err => {
@@ -115,6 +121,9 @@ export class PreVerificationComponent implements OnInit {
       this.badSend = true;
       this.loaderService.display(false);
     });
+
+
+
   }
 
   public getJSON(): Observable<any> {
@@ -133,6 +142,12 @@ export class PreVerificationComponent implements OnInit {
 
     const file: File = inputValue.files[0];
     const myReader: FileReader = new FileReader();
+
+    if (file.size > 5000000) {
+      alert('File size should be less than 5 MB!');
+      this.loaderService.display(false);
+      return;
+    }
 
     const sourceObject = {
       id: '',
@@ -164,7 +179,6 @@ export class PreVerificationComponent implements OnInit {
         alert('Error when upload your file. Try once again later...');
       });
     };
-
 
     myReader.readAsDataURL(file);
   }

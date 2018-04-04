@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {AuthService} from '../core/auth.service';
 
+import { ResponseContentType } from '@angular/http';
+
 @Injectable()
 export class HttpClient {
 
@@ -66,6 +68,24 @@ export class HttpClient {
     return new Promise((resolve, reject) => {
       this.http.put(url, data, {
         headers: headers,
+      })
+        .map(res => res)
+        // tslint:disable-next-line:no-shadowed-variable
+        .subscribe((data) => {
+          resolve(data);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  download(url) {
+    const headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    return new Promise((resolve, reject) => {
+      this.http.get(url, {
+        headers: headers,
+        responseType: ResponseContentType.Blob
       })
         .map(res => res)
         // tslint:disable-next-line:no-shadowed-variable
