@@ -30,16 +30,16 @@ export class PreVerificationComponent implements OnInit {
   questions: any;
 
   constructor(private userService: UserService) {
-
-  }
-
-  ngOnInit() {
     this.userService.getUser().then((data) => {
       this.userData = JSON.parse(data['_body']);
 
       this.fillData();
     })
     .catch(err => console.log(err));
+  }
+
+  ngOnInit() {
+
   }
 
   fillData() {
@@ -52,10 +52,26 @@ export class PreVerificationComponent implements OnInit {
     this.userData.Gender = this.checkAttribute(AttributeTypes.Gender);
     this.userData.BirthDate = this.checkAttribute(AttributeTypes.BirthDate);
     this.userData.CountryCode = this.checkAttribute(AttributeTypes.CountryCode);
+    this.userData.Zip = this.checkAttribute(AttributeTypes.Zip);
+    this.userData.State = this.checkAttribute(AttributeTypes.State);
+    this.userData.City = this.checkAttribute(AttributeTypes.City);
+    this.userData.Street = this.checkAttribute(AttributeTypes.Street);
+    this.userData.House = this.checkAttribute(AttributeTypes.House);
+    this.userData.Flat = this.checkAttribute(AttributeTypes.Flat);
+    this.userData.PassportType = this.checkAttribute(AttributeTypes.PassportType);
+    this.userData.PassportNumber = this.checkAttribute(AttributeTypes.PassportNumber);
+    this.userData.PassportIssueDate = this.checkAttribute(AttributeTypes.PassportIssueDate);
+    this.userData.PassportExpirationDate = this.checkAttribute(AttributeTypes.PassportExpirationDate);
+    this.userData.PassportPhoto = this.checkAttribute(AttributeTypes.PassportPhoto);
+    this.userData.AddressPhoto = this.checkAttribute(AttributeTypes.AddressPhoto);
+    this.userData.UserPhoto = this.checkAttribute(AttributeTypes.UserPhoto);
+
+    console.log(this.userData);
  }
 
   checkAttribute(type) {
-    const attr = _.find(this.userAttributes, { 'code': type });
+    const attr = _.find(this.userData.attrs, { 'code': type });
+    console.log(attr);
     if ( attr !== undefined ) {
       return attr;
     } else {
@@ -90,5 +106,5 @@ enum AttributeTypes {
 }
 
 export class Attribute {
-  constructor(private Code: string, private Value: string, private Validation: string) {}
+  constructor(private code: string, private value: string, private validation: string) {}
 }
