@@ -140,7 +140,7 @@
 
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button class="btn btn-default btn-blue">View</button>
+                            <button class="btn btn-default btn-blue" (click)="saveFile(userData.PassportPhoto.value)">View</button>
                             <label class="btn btn-blue">
                                 Upload <input type="file" accept="image/*" (change)="changeListener($event, '1070')" hidden>
                            </label>
@@ -158,7 +158,7 @@
 
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button class="btn btn-default btn-blue">View</button>
+                            <button class="btn btn-default btn-blue" (click)="saveFile(userData.AddressPhoto.value)">View</button>
                             <label class="btn btn-blue">
                               Upload <input type="file" accept="image/*" (change)="changeListener($event, '1071')" hidden>
                            </label>
@@ -176,7 +176,7 @@
 
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button class="btn btn-default btn-blue">View</button>
+                            <button class="btn btn-default btn-blue" (click)="saveFile(userData.UserPhoto.value)">View</button>
                             <label class="btn btn-blue">
                                 Upload <input type="file" accept="image/x-png,image/jpeg"  (change)="changeListener($event, '1072')" hidden>
                            </label>

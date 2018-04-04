@@ -66,9 +66,6 @@ export class PreVerificationComponent implements OnInit {
       this.fillData();
 
       // tslint:disable-next-line:no-shadowed-variable
-      this.userService.getSourse(this.userData.PassportPhoto.value).then((data) => {
-        console.log(data);
-      });
 
       this.loaderService.display(false);
     })
@@ -181,6 +178,12 @@ export class PreVerificationComponent implements OnInit {
     };
 
     myReader.readAsDataURL(file);
+  }
+
+  saveFile(value) {
+    this.userService.getSourse(value).then((data) => {
+      console.log(data);
+    });
   }
 
 }
