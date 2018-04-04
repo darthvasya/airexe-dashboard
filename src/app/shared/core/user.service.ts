@@ -29,13 +29,9 @@ export class UserService {
   getSourse(id) {
 
     return this.http.download(`${environment.apiUrl}api/v1/sources/${id}`).then((data) => {
-            const blob = new Blob([data], {type: 'text/plain'});
+            const blob = new Blob([data] , {type: 'image/jpg'});
             console.log(blob);
-            // const fileURL = URL.createObjectURL(blob);
-            // console.log(fileURL);
-
-            // saveAs(blob, 's.txt');
-
+            saveAs(blob, 's.jpg');
     })
     .catch((err) => {
       console.log(err);
