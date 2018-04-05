@@ -5,7 +5,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 
 // Import ngx-twitter-timeline
-import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline'
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 
 @NgModule({
     imports: [

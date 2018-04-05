@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: 'login', loadChildren: './login/login.module#LoginModule' },
     { path: 'registration', loadChildren: './registration/registration.module#RegistrationModule' },
     { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
-    // { path: '**', redirectTo: 'not-found' }
+    { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({
