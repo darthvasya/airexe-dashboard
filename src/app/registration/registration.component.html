@@ -1,8 +1,15 @@
-<div class="wrapper">
+<div class="logo">
+    <a href="#"><img src="../../../../assets/img/apple-icon-120x120.png" width="100px" alt=""></a>
+</div>
+<div class="wrapper bg">
     <div class="wrapper-inner">
         <div class="container-fluid bg-blue">
+            <!-- <div class="col-12 text-center">
+
+            </div> -->
             <div class="col-5 center">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <h2 class="text-center"><strong>AIREXE USER ACCOUNT</strong></h2>
+                <ul class="nav nav-tabs martop-15" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true" (click)='clear()'>Login</a>
                     </li>
@@ -13,7 +20,7 @@
 
                 <div class="tab-content mb-5" id="myTabContent">
                     <div class="alert alert-success border-success" role="alert " [hidden]='isConfirm == false'>
-                        <h4 class="alert-heading " >Thank you!</h4>
+                        <h4 class="alert-heading ">Thank you!</h4>
                         <p>
                             Your account successfully activated. Now you can log-in to AIREXE with your email address and password.</p>
                     </div>

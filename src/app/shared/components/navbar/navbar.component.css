@@ -31,7 +31,8 @@
 .nav-link:hover {
     color: #005c85 !important;
 }
+
 .hover-darker:hover {
-  filter: brightness(95%);
-  transition: 0.2s;
+    filter: brightness(95%);
+    transition: 0.2s;
 }
