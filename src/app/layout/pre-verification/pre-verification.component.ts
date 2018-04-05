@@ -59,6 +59,12 @@ export class PreVerificationComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.updateData();
+
+  }
+
+  updateData() {
     this.loaderService.display(true);
     this.userService.getUser().then((data) => {
       this.userAttributes = JSON.parse(data['_body']).attrs;
@@ -71,7 +77,6 @@ export class PreVerificationComponent implements OnInit {
     .catch(err => {
       this.loaderService.display(false);
     });
-
   }
 
   fillData() {
@@ -156,7 +161,7 @@ export class PreVerificationComponent implements OnInit {
 
     myReader.onloadend = (e) => {
       console.log(file);
-      sourceObject.picture = myReader.result.split(',')[1];
+      sourceObject.data = myReader.result.split(',')[1];
 
       switch (type) {
         case AttributeTypes.UserPhoto:
@@ -169,7 +174,7 @@ export class PreVerificationComponent implements OnInit {
           sourceObject.sourceType = 0;
           break;
       }
-      console.log(sourceObject);
+
       this.userService.createSourse(sourceObject).then(data => {
         this.loaderService.display(false);
         alert('Uploaded successfully');
