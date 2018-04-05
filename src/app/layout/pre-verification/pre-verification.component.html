@@ -140,10 +140,10 @@
 
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button class="btn btn-default btn-blue" (click)="saveFile(userData.PassportPhoto.value)" [hidden]='(userData.PassportPhoto.value === "" || userData.PassportPhoto.value === "1")'>View</button>
                             <label class="btn btn-blue"  [hidden]='userData.PassportPhoto.validation == 1'>
-                                Upload <input type="file" accept="image/*" (change)="changeListener($event, '1070')" hidden>
+                                Upload<input class="btn btn-default btn-blue" type="file" accept="image/*" (change)="changeListener($event, '1070')" hidden>
                            </label>
+                           <button class="btn btn-default btn-blue" (click)="saveFile(userData.PassportPhoto.value)" [hidden]='(userData.PassportPhoto.value === "" || userData.PassportPhoto.value === "1")'>View</button>
                         </span>
                     </div>
 
@@ -158,10 +158,11 @@
 
                     <div class="input-group">
                         <span class="input-group-btn upload">
-                            <button class="btn btn-default btn-blue" (click)="saveFile(userData.AddressPhoto.value)" [hidden]='(userData.AddressPhoto.value === "" || userData.AddressPhoto.value === "1")'>View</button>
+
                             <label class="btn btn-blue" [hidden]='userData.AddressPhoto.validation == 1'>
                               Upload <input type="file" accept="image/*" (change)="changeListener($event, '1071')" hidden >
                            </label>
+                           <button class="btn btn-default btn-blue" (click)="saveFile(userData.AddressPhoto.value)" [hidden]='(userData.AddressPhoto.value === "" || userData.AddressPhoto.value === "1")'>View</button>
                         </span>
                     </div>
 
@@ -173,13 +174,15 @@
                     <span class="badge badge-success" [hidden]='!(userData.UserPhoto.validation == 1)'>Verified</span>
                     <span class="badge badge-danger" [hidden]='!(userData.UserPhoto.validation == 2)'>Rejected</span>
                     <span class="badge badge-warning" [hidden]='!(userData.UserPhoto.validation == 0)'>Waiting verification</span>
-                    <button class="btn btn-default btn-blue" (click)="saveFile(userData.UserPhoto.value)" [hidden]='(userData.UserPhoto.value === "")'>View</button>
+
                     <div class="input-group">
-                        <span class="input-group-btn">
+                        <span class="input-group-btn upload">
                             <label class="btn btn-blue" [hidden]='userData.UserPhoto.validation == 1'>
                                 Upload <input type="file" accept="image/x-png,image/jpeg"  (change)="changeListener($event, '1072')" hidden>
                            </label>
+                           <button class="btn btn-default btn-blue" (click)="saveFile(userData.UserPhoto.value)" [hidden]='(userData.UserPhoto.value === "")'>View</button>
                         </span>
+
                     </div>
 
                 </div>
