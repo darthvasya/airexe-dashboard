@@ -21,6 +21,9 @@ export class ProfileComponent implements OnInit {
   copyHelp  = '';
   isCopied1 = false;
 
+  isEmailVerified = false;
+  isAccountVerified = 0;
+
   constructor(private loaderService: LoaderService, private userService: UserService, private authService: AuthService) { }
 
   ngOnInit() {
@@ -33,21 +36,41 @@ export class ProfileComponent implements OnInit {
     })
     .catch(err => {
       this.loaderService.display(false);
-      console.log(err);
     });
   }
 
   fillData() {
     this.userAttributes = this.userData.attrs;
     this.userEmail = _.find(this.userData.attrs, { 'code': AttributeTypes.Email });
-    if (this.userEmail !== undefined) { this.userEmail.validation.toString(); }
-    this.userVerificationStatus = this.userData.status.toString();
+
+    this.checkBitMask(this.userData.status);
     this.referalId = 'https://airexe.io/register?referral=' + this.authService.getUserInfo().userId;
   }
 
-copied() {
-  this.copyHelp = 'ID copied';
-}
+  copied() {
+    this.copyHelp = 'ID copied';
+  }
+
+  checkBitMask(value) {
+    switch (value) {
+      case 0:
+        this.isEmailVerified = false;
+        this.isAccountVerified = 0;
+        break;
+      case 2:
+        this.isEmailVerified = true;
+        this.isAccountVerified = 0;
+        break;
+      case 6:
+        this.isEmailVerified = true;
+        this.isAccountVerified = 1;
+        break;
+      case 10:
+        this.isEmailVerified = true;
+        this.isAccountVerified = 2;
+        break;
+    }
+  }
 
 }
 enum AttributeTypes {

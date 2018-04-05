@@ -5,6 +5,7 @@
 .btn-blue {
   background: #2b4a91;
   border-radius: 0;
+  position: relative;
   color: #fff;
 }
 
@@ -12,3 +13,4 @@
   color: red;
   font-size: 20px;
 }
+

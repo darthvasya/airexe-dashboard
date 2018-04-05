@@ -52,7 +52,7 @@
                                 <input type="password" class="form-control mbm-20" id="registrationPassword" aria-describedby="passwordHelp" placeholder="Minimum 8 characters, latin letters and digits" (input)='validatePassword()' [(ngModel)]='registrationData.password' name="password"
                                     required #pass2>
                                 <img class="eye" src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" id="eye" (mousedown)="showPassword()" (mouseup)="hidePassword()" />
-                                <small id="passwordHelp" class="form-text mtm-10">{{passwordStrength}}</small>
+                                <small id="passwordHelp" class="form-text mtm-10" style="color: red;">{{passwordStrength}}</small>
                             </div>
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="registrationCheckTerms" [(ngModel)]='registrationData.terms' name="terms">
