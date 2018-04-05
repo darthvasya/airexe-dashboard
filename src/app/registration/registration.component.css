@@ -63,6 +63,10 @@ input:focus {
     text-decoration: underline;
 }
 
+.link:hover {
+  color: white;
+}
+
 .tab-content {
     border: 1px solid #fff;
     padding: 10px;
