@@ -68,7 +68,7 @@ export class PreVerificationComponent implements OnInit {
     this.loaderService.display(true);
     this.userService.getUser().then((data) => {
       this.userAttributes = JSON.parse(data['_body']).attrs;
-
+      console.log(this.userAttributes);
       this.fillData();
 
       // tslint:disable-next-line:no-shadowed-variable
@@ -178,6 +178,7 @@ export class PreVerificationComponent implements OnInit {
       this.userService.createSourse(sourceObject).then(data => {
         this.loaderService.display(false);
         alert('Uploaded successfully');
+        this.updateData();
       }).catch(err => {
         this.loaderService.display(false);
         alert('Error when upload your file. Try once again later...');
