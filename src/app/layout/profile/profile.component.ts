@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit {
     this.userEmail = _.find(this.userData.attrs, { 'code': AttributeTypes.Email });
     if (this.userEmail !== undefined) { this.userEmail.validation.toString(); }
     this.userVerificationStatus = this.userData.status.toString();
-    this.referalId = 'https://airexe.io/register?referral=' + this.authService.getUserInfo().id;
+    this.referalId = 'https://airexe.io/register?referral=' + this.authService.getUserInfo().userId;
   }
 
 copied() {

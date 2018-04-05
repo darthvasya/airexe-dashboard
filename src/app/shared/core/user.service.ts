@@ -26,9 +26,21 @@ export class UserService {
     return this.http.post(`${environment.apiUrl}api/v1/users/${this.authService.getUserInfo().userId}/sources`, data);
   }
 
+  createSourceByForm(data, picture: File) {
+    console.log(picture);
+
+    let formData: FormData = new FormData();
+    formData.append('Picture', picture, 'file.jpg');
+
+    console.log(formData);
+    // tslint:disable-next-line:max-line-length
+    return this.http.post(`${environment.apiUrl}api/v1/users/${this.authService.getUserInfo().userId}/sources/${data.sourceType}/form`, formData);
+  }
+
   getSourse(id) {
 
     return this.http.download(`${environment.apiUrl}api/v1/sources/${id}`).then((data) => {
+            console.log(data);
             const blob = new Blob([data['_body']] , {type: 'image/jpg'});
             saveAs(blob, `${id}.jpg`);
     })

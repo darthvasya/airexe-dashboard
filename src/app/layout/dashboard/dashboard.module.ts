@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 
-// import { Ng4TwitterTimelineModule } from 'ng4-twitter-timeline/lib/index';
+// Import ngx-twitter-timeline
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline'
 
 @NgModule({
     imports: [
         CommonModule,
-        DashboardRoutingModule
-        // Ng4TwitterTimelineModule
+        DashboardRoutingModule,
+        NgxTwitterTimelineModule
     ],
     declarations: [
         DashboardComponent

@@ -48,6 +48,7 @@ export class HttpClient {
   post(url, data) {
     const headers = new Headers();
     this.createAuthorizationHeader(headers);
+
     return new Promise((resolve, reject) => {
       this.http.post(url, data, {
         headers: headers,

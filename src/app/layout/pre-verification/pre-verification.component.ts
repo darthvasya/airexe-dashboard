@@ -66,7 +66,6 @@ export class PreVerificationComponent implements OnInit {
       this.fillData();
 
       // tslint:disable-next-line:no-shadowed-variable
-
       this.loaderService.display(false);
     })
     .catch(err => {
@@ -151,11 +150,14 @@ export class PreVerificationComponent implements OnInit {
       userId: '',
       sourceType: 0,
       data: '',
+      picture: {},
       createdDate: Date.UTC
     };
 
     myReader.onloadend = (e) => {
-      sourceObject.data = myReader.result.split(',')[1];
+      console.log(file);
+      sourceObject.picture = myReader.result.split(',')[1];
+
       switch (type) {
         case AttributeTypes.UserPhoto:
           sourceObject.sourceType = 2;
@@ -167,7 +169,7 @@ export class PreVerificationComponent implements OnInit {
           sourceObject.sourceType = 0;
           break;
       }
-
+      console.log(sourceObject);
       this.userService.createSourse(sourceObject).then(data => {
         this.loaderService.display(false);
         alert('Uploaded successfully');
@@ -181,8 +183,11 @@ export class PreVerificationComponent implements OnInit {
   }
 
   saveFile(value) {
+    this.loaderService.display(true);
     this.userService.getSourse(value).then((data) => {
-      console.log(data);
+      this.loaderService.display(false);
+    }).catch(err => {
+      this.loaderService.display(false);
     });
   }
 

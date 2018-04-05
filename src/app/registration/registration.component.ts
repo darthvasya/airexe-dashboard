@@ -60,12 +60,15 @@ export class RegistrationComponent implements OnInit {
     if (!this.validateEmail(this.loginData.email)) {
       this.errorMessage = 'Email is invalid!';
       this.isLoginFailed = true;
+      this.loaderService.display(false);
     } else if (this.loginData.password.length === 0 || this.loginData.email.length === 0) {
       this.errorMessage = 'Email or password can`t be empty!';
       this.isLoginFailed = true;
+      this.loaderService.display(false);
     } else if (this.loginData.password.length === 0) {
       this.errorMessage = 'Password should be more than 8 characters!';
       this.isLoginFailed = true;
+      this.loaderService.display(false);
     } else {
       this.authService.login(this.loginData)
       .then(data => {
@@ -122,7 +125,7 @@ export class RegistrationComponent implements OnInit {
       this.allowRegistration = true;
     } else if (mediumRegex.test(pwd)) {
       this.passwordStrength = 'Medium!';
-      this.allowRegistration = false;
+      this.allowRegistration = true;
     } else {
       this.allowRegistration = false;
       this.passwordStrength = 'Password too week. Please make stronger password, minimum 8 characters';
