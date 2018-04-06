@@ -62,7 +62,7 @@ export class AuthService {
     const loginData = { credentialsType: 'password', login: loginInputData.email, password: sha256(loginInputData.password) };
 
     return new Promise((resolve, reject) => {
-      this.http.put(`${environment.apiUrl}api/v1/credentials/signin`, loginData)
+      this.http.put(`${environment.apiUrl}credentials/signin`, loginData)
         .map(res => res)
         // tslint:disable-next-line:no-shadowed-variable
         .subscribe((data) => {
@@ -89,7 +89,7 @@ export class AuthService {
     }
 
     return new Promise((resolve, reject) => {
-      this.http.post(`${environment.apiUrl}api/v1/users` + referalId, registrationData)
+      this.http.post(`${environment.apiUrl}users` + referalId, registrationData)
         .map(res => res)
         // tslint:disable-next-line:no-shadowed-variable
         .subscribe((data) => {
@@ -104,7 +104,7 @@ export class AuthService {
       const headers = new Headers();
       headers.append('X-Auth-Token', token);
       return new Promise((resolve, reject) => {
-        this.http.put(`${environment.apiUrl}api/v1/users/confirm`, null, {
+        this.http.put(`${environment.apiUrl}users/confirm`, null, {
           headers: headers,
         })
           .map(res => res)

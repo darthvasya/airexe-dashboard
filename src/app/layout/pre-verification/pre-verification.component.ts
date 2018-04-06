@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { ViewChild } from '@angular/core';
+
 // tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -24,6 +26,18 @@ export class PreVerificationComponent implements OnInit {
   successSend = false;
   badSend = false;
   countryCodes: any = CountryCodes;
+
+
+
+
+  @ViewChild('inputUserPhoto')
+  inputUserPhotoVar: any;
+
+  @ViewChild('inputAddressPhoto')
+  inputAddressPhotoVar: any;
+
+  @ViewChild('inputPassportPhoto')
+  inputPassportPhotoVar: any;
 
   userImage: any;
   passportImage: any;
@@ -79,6 +93,21 @@ export class PreVerificationComponent implements OnInit {
     });
   }
 
+  updateImageData() {
+    this.loaderService.display(true);
+    this.userService.getUser().then((data) => {
+      this.userAttributes = JSON.parse(data['_body']).attrs;
+      console.log(this.userAttributes);
+      this.fillImageData();
+
+      // tslint:disable-next-line:no-shadowed-variable
+      this.loaderService.display(false);
+    })
+    .catch(err => {
+      this.loaderService.display(false);
+    });
+  }
+
   fillData() {
     this.userData.FirstName = this.checkAttribute(AttributeTypes.FirstName);
     this.userData.MiddleName = this.checkAttribute(AttributeTypes.MiddleName);
@@ -100,6 +129,12 @@ export class PreVerificationComponent implements OnInit {
     this.userData.AddressPhoto = this.checkAttribute(AttributeTypes.AddressPhoto);
     this.userData.UserPhoto = this.checkAttribute(AttributeTypes.UserPhoto);
  }
+
+ fillImageData() {
+  this.userData.PassportPhoto = this.checkAttribute(AttributeTypes.PassportPhoto);
+  this.userData.AddressPhoto = this.checkAttribute(AttributeTypes.AddressPhoto);
+  this.userData.UserPhoto = this.checkAttribute(AttributeTypes.UserPhoto);
+}
 
   checkAttribute(type) {
     const attr = _.find(this.userAttributes, { 'code': type });
@@ -176,9 +211,16 @@ export class PreVerificationComponent implements OnInit {
       }
 
       this.userService.createSourse(sourceObject).then(data => {
+
+        this.inputUserPhotoVar.nativeElement.value = '';
+        this.inputAddressPhotoVar.nativeElement.value = '';
+        this.inputPassportPhotoVar.nativeElement.value = '';
+
         this.loaderService.display(false);
+
         alert('Uploaded successfully');
-        this.updateData();
+
+        this.updateImageData();
       }).catch(err => {
         this.loaderService.display(false);
         alert('Error when upload your file. Try once again later...');

@@ -12,18 +12,18 @@ export class UserService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   getUser() {
-    return this.http.get(`${environment.apiUrl}api/v1/users/` + this.authService.getUserInfo().userId);
+    return this.http.get(`${environment.apiUrl}users/` + this.authService.getUserInfo().userId);
   }
 
   updateAttributes(data) {
-    return this.http.put(`${environment.apiUrl}api/v1/users/${this.authService.getUserInfo().userId}/attributes`, data);
+    return this.http.put(`${environment.apiUrl}users/${this.authService.getUserInfo().userId}/attributes`, data);
   }
 
   createSourse(data) {
     data.id = this.authService.getUserInfo().id;
     data.userId = this.authService.getUserInfo().userId;
     console.log(data);
-    return this.http.post(`${environment.apiUrl}api/v1/users/${this.authService.getUserInfo().userId}/sources`, data);
+    return this.http.post(`${environment.apiUrl}users/${this.authService.getUserInfo().userId}/sources`, data);
   }
 
   createSourceByForm(data, picture: File) {
@@ -34,12 +34,12 @@ export class UserService {
 
     console.log(formData);
     // tslint:disable-next-line:max-line-length
-    return this.http.post(`${environment.apiUrl}api/v1/users/${this.authService.getUserInfo().userId}/sources/${data.sourceType}/form`, formData);
+    return this.http.post(`${environment.apiUrl}users/${this.authService.getUserInfo().userId}/sources/${data.sourceType}/form`, formData);
   }
 
   getSourse(id) {
 
-    return this.http.download(`${environment.apiUrl}api/v1/sources/${id}`).then((data) => {
+    return this.http.download(`${environment.apiUrl}sources/${id}`).then((data) => {
             console.log(data);
             const blob = new Blob([data['_body']] , {type: 'image/jpg'});
             saveAs(blob, `${id}.jpg`);
