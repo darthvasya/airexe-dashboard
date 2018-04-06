@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit {
     this.userEmail = _.find(this.userData.attrs, { 'code': AttributeTypes.Email });
 
     this.checkBitMask(this.userData.status);
-    this.referalId = 'https://user.airexe.io/register?referral=' + this.authService.getUserInfo().userId;
+    this.referalId = 'https://user.airexe.io/registration?referral=' + this.authService.getUserInfo().userId;
   }
 
   copied() {
