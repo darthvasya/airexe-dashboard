@@ -63,11 +63,11 @@ export class ProfileComponent implements OnInit {
         break;
       case 6:
         this.isEmailVerified = true;
-        this.isAccountVerified = 1;
+        this.isAccountVerified = 2;
         break;
       case 10:
         this.isEmailVerified = true;
-        this.isAccountVerified = 2;
+        this.isAccountVerified = 1;
         break;
     }
   }

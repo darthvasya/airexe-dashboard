@@ -8,7 +8,12 @@
 }
 
 .active {
-  background-color: #0C78A8;
+    background-color: #0c78a8;
 
-  padding: 0px;
+    padding: 0px;
+}
+
+.width {
+    width: 100%;
+    height: 80vh;
 }

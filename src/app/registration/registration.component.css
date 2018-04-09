@@ -153,7 +153,9 @@ input:focus {
     margin-top: 15%;
 }
 
-
+.link:hover {
+    color: white;
+}
 /* .nav-link:not(.nav-link.active) {
     margin-left: 5px;
 } */
