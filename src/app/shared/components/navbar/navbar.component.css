@@ -28,11 +28,46 @@
     background: yellowgreen;
 }
 
-.nav-link:hover {
+.nav-link-top:hover {
     color: #005c85 !important;
 }
 
 .hover-darker:hover {
     filter: brightness(95%);
     transition: 0.2s;
+}
+
+.custom-color {
+  background: #005c85;
+}
+
+.menu-block {
+  text-align: center;
+}
+
+.nav-link-custom:hover {
+  text-decoration: underline;
+}
+
+
+
+@media only screen and (max-width: 991px) {
+    .show-menu {
+        display: none;
+    }
+
+    .logo {
+        height: 80px;
+    }
+
+    .logo img{
+        margin-left: 38%;
+    }
+}
+
+
+@media only screen and (min-width: 991px) {
+    .show-menu-btn {
+        display: none;
+    }
 }

@@ -7,10 +7,22 @@ import { Router } from '@angular/router';
     styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
+    css_class_wrapper: any;
+    css_class_sidebar: any;
 
     constructor(public router: Router) { }
 
     ngOnInit() {
+
+        if (document.body.clientWidth < 991) {
+            this.css_class_wrapper = 'col-12';
+            this.css_class_sidebar = 'd-none';
+            console.log(this.css_class_sidebar);
+        } else {
+            this.css_class_wrapper = 'col-10';
+            this.css_class_sidebar = '';
+        }
+
         if (this.router.url === '/') {
             this.router.navigate(['/dashboard']);
         }

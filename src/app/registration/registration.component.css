@@ -31,7 +31,7 @@ input:focus {
 
 .center {
     margin: auto;
-    padding-top: 5%;
+    padding-top: 1%;
 }
 
 .bg-blue {
@@ -63,10 +63,6 @@ input:focus {
     text-decoration: underline;
 }
 
-.link:hover {
-  color: white;
-}
-
 .tab-content {
     border: 1px solid #fff;
     padding: 10px;
@@ -83,7 +79,7 @@ input:focus {
 
 .eye {
     position: relative;
-    left: 95%;
+    left: 93%;
     top: -30px;
     cursor: pointer;
 }

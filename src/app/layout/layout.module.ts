@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { LayoutComponent } from './layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
-import { NavbarComponent, SidebarComponent } from '../shared/components';
+import { NavbarComponent } from '../shared/components/navbar/navbar.component';
+import { SidebarComponent } from '../shared/components/sidebar/sidebar.component';
 
 @NgModule({
   imports: [

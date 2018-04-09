@@ -1,103 +1,109 @@
-<div class="logo">
-    <a href="#"><img src="../../../../assets/img/apple-icon-120x120.png" width="100px" alt=""></a>
-</div>
-<div class="wrapper bg">
-    <div class="wrapper-inner">
-        <div class="container-fluid bg-blue">
-            <!-- <div class="col-12 text-center">
+<div class="container-fluid">
+  <div class="row">
+      <div class="logo">
+          <a href="#"><img src="../../../../assets/img/apple-icon-120x120.png" alt=""></a>
+      </div>
+      <div class="wrapper bg">
+          <div class="wrapper-inner">
+              <div class="container-fluid bg-blue">
+                  <!-- <div class="col-12 text-center">
 
             </div> -->
-            <div class="col-5 center">
-                <h2 class="text-center"><strong>AIREXE USER ACCOUNT</strong></h2>
-                <ul class="nav nav-tabs martop-15" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true" (click)='clear()'>Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#registration" role="tab" aria-controls="registration" aria-selected="false" (click)='clear()'>Registration</a>
-                    </li>
-                </ul>
+                  <div class="col-12 mt-5">
+                      <h2 class="text-center pt-5"><strong>AIREXE USER ACCOUNT</strong></h2>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 center">
+                      <ul class="nav nav-tabs martop-15" id="myTab" role="tablist">
+                          <li class="nav-item">
+                              <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true" (click)='clear()'>Login</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#registration" role="tab" aria-controls="registration" aria-selected="false" (click)='clear()'>Registration</a>
+                          </li>
+                      </ul>
 
-                <div class="tab-content mb-5" id="myTabContent">
-                    <div class="alert alert-success border-success" role="alert " [hidden]='isConfirm == false'>
-                        <h4 class="alert-heading ">Thank you!</h4>
-                        <p>
-                            Your account successfully activated. Now you can log-in to AIREXE with your email address and password.</p>
-                    </div>
+                      <div class="tab-content mb-5" id="myTabContent">
+                          <div class="alert alert-success border-success" role="alert " [hidden]='isConfirm == false'>
+                              <h4 class="alert-heading ">Thank you!</h4>
+                              <p>
+                                  Your account successfully activated. Now you can log-in to AIREXE with your email address and password.</p>
+                          </div>
 
-                    <div class="tab-pane fade  show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                        <form action="index.html">
-                            <div class="form-group">
-                                <label for="loginUsername">Login(Email)</label>
-                                <input type="email" class="form-control" id="loginUsername" aria-describedby="emailHelp" placeholder="your@email.com" [(ngModel)]='loginData.email' name="email" required email>
-                                <small id="emailHelp" class="form-text ">We'll never share your email with anyone else.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="loginPassword">Password</label>
-                                <input type="password" class="form-control" id="loginPassword" placeholder="Minimum 8 characters, latin letters and digits" [(ngModel)]='loginData.password' name="password" required #pass1>
-                                <img class="eye" src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" id="eye" (mousedown)="showPassword()" (mouseup)="hidePassword()" />
-                            </div>
-                            <!-- <div class="form-check mtm-10">
+                          <div class="tab-pane fade  show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                              <form action="index.html">
+                                  <div class="form-group">
+                                      <label for="loginUsername">Login(Email)</label>
+                                      <input type="email" class="form-control" id="loginUsername" aria-describedby="emailHelp" placeholder="your@email.com" [(ngModel)]='loginData.email' name="email" required email>
+                                      <small id="emailHelp" class="form-text ">We'll never share your email with anyone else.</small>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="loginPassword">Password</label>
+                                      <input type="password" class="form-control" id="loginPassword" placeholder="Minimum 8 characters, latin letters and digits" [(ngModel)]='loginData.password' name="password" required #pass1>
+                                      <img class="eye" src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" id="eye" (mousedown)="showPassword()" (mouseup)="hidePassword()" />
+                                  </div>
+                                  <!-- <div class="form-check mtm-10">
                         <input type="checkbox" class="form-check-input" id="loginCheck">
                         <label class="form-check-label" for="loginCheck">Keep me signed in</label>
                     </div> -->
-                            <button type="button" class="btn mt-10  btn-login" (click)='onLogging()'>Login</button>
+                                  <button type="button" class="btn mt-10  btn-login" (click)='onLogging()'>Login</button>
 
-                            <strong class="hint mt-10">Forgor your password? Restore it here <a class="link" href="mailto:support@airexe.io" target="_blank">Contact support here</a></strong>
+                                  <strong class="hint mt-10">Forgor your password? Restore it here <a class="link" href="mailto:support@airexe.io" target="_blank">Contact support here</a></strong>
 
-                        </form>
-                    </div>
-                    <div class="tab-pane fade" id="registration" role="tabpanel" aria-labelledby="registration-tab">
-                        <form action="index.html">
-                            <div class="form-group">
-                                <label for="registrationUsername">Login(Email)</label>
-                                <input type="email" class="form-control" id="registrationUsername" aria-describedby="emailHelp" placeholder="your@email.com" [(ngModel)]='registrationData.email' name="email" required email>
-                                <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="registrationPassword">Password</label>
-                                <input type="password" class="form-control mbm-20" id="registrationPassword" aria-describedby="passwordHelp" placeholder="Minimum 8 characters, latin letters and digits" (input)='validatePassword()' [(ngModel)]='registrationData.password' name="password"
-                                    required #pass2>
-                                <img class="eye" src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" id="eye" (mousedown)="showPassword()" (mouseup)="hidePassword()" />
-                                <small id="passwordHelp" class="form-text mtm-10" style="color: red;">{{passwordStrength}}</small>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="registrationCheckTerms" [(ngModel)]='registrationData.terms' name="terms">
-                                <label class="form-check-label" for="registrationCheckTerms">I agree with service terms and conditions </label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="registrationCheckEmail" [(ngModel)]='registrationData.getEmails' name="getEmails">
-                                <label class="form-check-label" for="registrationCheckEmail">I agree to receive news to my email</label>
-                            </div>
-                            <button type="button " class="btn mt-10 " (click)='onRegistration()' (keypress)='validatePassword()' [disabled]='!allowRegistration'>Registration</button>
-                        </form>
-                    </div>
+                              </form>
+                          </div>
+                          <div class="tab-pane fade" id="registration" role="tabpanel" aria-labelledby="registration-tab">
+                              <form action="index.html">
+                                  <div class="form-group">
+                                      <label for="registrationUsername">Login(Email)</label>
+                                      <input type="email" class="form-control" id="registrationUsername" aria-describedby="emailHelp" placeholder="your@email.com" [(ngModel)]='registrationData.email' name="email" required email>
+                                      <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="registrationPassword">Password</label>
+                                      <input type="password" class="form-control mbm-20" id="registrationPassword" aria-describedby="passwordHelp" placeholder="Minimum 8 characters, latin letters and digits" (input)='validatePassword()' [(ngModel)]='registrationData.password' name="password"
+                                          required #pass2>
+                                      <img class="eye" src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" id="eye" (mousedown)="showPassword()" (mouseup)="hidePassword()" />
+                                      <small id="passwordHelp" class="form-text mtm-10" style="color: red;">{{passwordStrength}}</small>
+                                  </div>
+                                  <div class="form-check">
+                                      <input type="checkbox" class="form-check-input" id="registrationCheckTerms" [(ngModel)]='registrationData.terms' name="terms">
+                                      <label class="form-check-label" for="registrationCheckTerms">I agree with service terms and conditions </label>
+                                  </div>
+                                  <div class="form-check">
+                                      <input type="checkbox" class="form-check-input" id="registrationCheckEmail" [(ngModel)]='registrationData.getEmails' name="getEmails">
+                                      <label class="form-check-label" for="registrationCheckEmail">I agree to receive news to my email</label>
+                                  </div>
+                                  <button type="button " class="btn mt-10 " (click)='onRegistration()' (keypress)='validatePassword()' [disabled]='!allowRegistration'>Registration</button>
+                              </form>
+                          </div>
 
-                    <div class="alert alert-success border-success" role="alert " [hidden]="!isRegistrationSuccess ">
-                        <h4 class="alert-heading">Well done!</h4>
-                        <p>Your account with login {{registrationData.email}} created. We sent you letter to {{registrationData.email}} with your email conformation link. Please follow the link from email we sent to confirm it. After confirmation you can
-                            login to your account at AIREXE.io.</p>
-                        <hr>
-                        <p class="mb-0 ">If you don’t see emails form support@airexe.io, please check “SPAM” folders at your mailbox, it might be there.</p>
-                    </div>
+                          <div class="alert alert-success border-success" role="alert " [hidden]="!isRegistrationSuccess ">
+                              <h4 class="alert-heading">Well done!</h4>
+                              <p>Your account with login {{registrationData.email}} created. We sent you letter to {{registrationData.email}} with your email conformation link. Please follow the link from email we sent to confirm it. After confirmation
+                                  you can login to your account at AIREXE.io.</p>
+                              <hr>
+                              <p class="mb-0 ">If you don’t see emails form support@airexe.io, please check “SPAM” folders at your mailbox, it might be there.</p>
+                          </div>
 
-                    <div class="alert alert-danger border-danger" role="alert " [hidden]="!isRegistrationFailed ">
-                        <h4 class="alert-heading text-danger">Ooops!</h4>
-                        <p>{{errorMessage}}</p>
-                    </div>
+                          <div class="alert alert-danger border-danger" role="alert " [hidden]="!isRegistrationFailed ">
+                              <h4 class="alert-heading text-danger">Ooops!</h4>
+                              <p>{{errorMessage}}</p>
+                          </div>
 
-                    <div class="alert alert-danger border-danger" role="alert " [hidden]="!isLoginFailed ">
-                        <h4 class="alert-heading ">Ooops!</h4>
-                        <p>{{errorMessage}}</p>
-                    </div>
+                          <div class="alert alert-danger border-danger" role="alert " [hidden]="!isLoginFailed ">
+                              <h4 class="alert-heading ">Ooops!</h4>
+                              <p>{{errorMessage}}</p>
+                          </div>
 
-                    <div class="alert alert-danger border-success " role="alert " [hidden]='isErrorConfirm == true'>
-                        <h4 class="alert-heading ">Thank you!</h4>
-                        <p>
-                            We cannot find requested AIREXE user, or email confirmation link is expired. Please try to register again. You should confirm your email address within 24 hours since registration</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                          <div class="alert alert-danger border-success " role="alert " [hidden]='isErrorConfirm == true'>
+                              <h4 class="alert-heading ">Thank you!</h4>
+                              <p>
+                                  We cannot find requested AIREXE user, or email confirmation link is expired. Please try to register again. You should confirm your email address within 24 hours since registration</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>

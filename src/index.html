@@ -94,6 +94,42 @@ var trackOutboundLink = function(url) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+    <script>
+      (function($) {
+
+        $( window ).resize(function() {
+
+         checkSidebar();
+        });
+
+
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                console.log(1234);
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+
+        function checkSidebar() {
+
+          if($( window ).width() < 991) {
+            $( "#sidebar" ).addClass( 'd-none' );
+            $( "#wrapper" ).removeClass( 'col-10' );
+            $( "#wrapper" ).addClass( 'col-12' );
+            console.log($( window ).width() );
+          } else {
+            $( "#sidebar" ).removeClass( 'd-none' );
+            $( "#wrapper" ).removeClass( 'col-12' );
+            $( "#wrapper" ).addClass( 'col-10' );
+            console.log($( window ).width() );
+          }
+        }
+
+      })(jQuery);
+
+    </script>
+
 </body>
 
 </html>
