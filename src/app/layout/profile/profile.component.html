@@ -27,9 +27,10 @@
             <label for="inputPassword" class="col-sm-2 col-form-label">Your referral link:</label>
             <div class="col-sm-8">
                 <div class="input-group">
-                    <input type="text" class="form-control text-dark" id="inputPassword" [(ngModel)]='referalId' name='referalId' readonly aria-describedby="copyHelp" #inputTarget>
+                    <input type="text" class="form-control text-dark" id="inputPassword" [(ngModel)]='referalId' name='referalId' readonly aria-describedby="copyHelp"
+                        #inputTarget>
                     <span class="input-group-btn">
-                      <button class="btn btn-default" [class.btn-success]= "isCopied1" type="button" [ngxClipboard]="inputTarget" (cbOnSuccess)="isCopied1 = true">Copy</button>
+                        <button class="btn btn-default" [class.btn-success]="isCopied1" type="button" [ngxClipboard]="inputTarget" (cbOnSuccess)="isCopied1 = true">Copy</button>
                     </span>
                 </div>
             </div>
@@ -39,4 +40,44 @@
             <button class='btn btn-blue mt-3'>Change passwrod</button>
         </div> -->
     </form>
+    <br>
+    <br>
+    <div class=' table-responsive'>
+            <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Status</th>
+                            <th scope="col">Count of users</th>
+                            <th scope="col">AIRX/user</th>
+                            <th scope="col">AIRX earned</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">New users not confirmed email</th>
+                            <td>{{this.referrersData.Status0}}</td>
+                            <td>{{this.staticData.Status0}}</td>
+                            <td>{{this.referrersData.Status0 * this.staticData.Status0}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Users confirmed their email login</th>
+                            <td>{{this.referrersData.Status2}}</td>
+                            <td>{{this.staticData.Status2}}</td>
+                            <td>{{this.referrersData.Status2 * this.staticData.Status2}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Verified users</th>
+                            <td>{{this.referrersData.Status6}}</td>
+                            <td>{{this.staticData.Status6}}</td>
+                            <td>{{this.referrersData.Status6 * this.staticData.Status6}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Not verified users</th>
+                            <td>{{this.referrersData.Status10}}</td>
+                            <td>{{this.staticData.Status10}}</td>
+                            <td>{{this.referrersData.Status10 * this.staticData.Status10}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+    </div>
 </div>

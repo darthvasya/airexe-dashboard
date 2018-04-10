@@ -1,0 +1,18 @@
+[
+    {
+        "status": 0,
+        "airx": 0
+    },
+    {
+        "status": 2,
+        "airx": 0.3
+    },
+    {
+        "status": 10,
+        "airx": 0
+    },
+    {
+        "status": 6,
+        "airx": 0.6
+    }
+]
