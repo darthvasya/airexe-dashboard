@@ -24,27 +24,28 @@
 
 <div class="pos-f-t custom-color">
     <div class="collapse" id="navbarToggleExternalContent">
-            <div class="logo">
-                    <a href="#">
-                        <img src="../../../../assets/img/apple-icon-120x120.png" width="100px" alt="">
-                    </a>
-                </div>
+        <div class="logo">
+            <a href="#">
+                <img src="../../../../assets/img/apple-icon-120x120.png" width="100px" alt="">
+            </a>
+        </div>
         <ul class="nav flex-column bg-blue menu-block">
 
-            <li class="nav-item">
+            <li data-toggle="collapse" data-target="#navbarToggleExternalContent" class="nav-item">
                 <a class="nav-link nav-link text-white active" target="_blank" href="https://airexe.io/index.html">Home</a>
             </li>
-            <li class="nav-item">
+            <li data-toggle="collapse" data-target="#navbarToggleExternalContent" class="nav-item">
                 <a class="nav-link nav-link-custom text-white" target="_blank" href="https://airexe.io/buytokens.html">Buy AIREXE Tokens</a>
             </li>
-            <li class="nav-item">
+            <li data-toggle="collapse" data-target="#navbarToggleExternalContent" class="nav-item">
                 <a class="nav-link nav-link-custom text-white" target="_blank" href="https://airexe.io/faq.html">FAQ</a>
             </li>
-            <li class="nav-item">
+            <li data-toggle="collapse" data-target="#navbarToggleExternalContent" class="nav-item">
                 <a class="nav-link nav-link-custom text-white" href="#">Pre-Registration</a>
             </li>
 
-            <li class="nav-item" routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
+            <li data-toggle="collapse" data-target="#navbarToggleExternalContent" class="nav-item" routerLinkActive="active" *ngFor="let menuItem of menuItems"
+                class="{{menuItem.class}}">
                 <a class="nav-link nav-link-custom text-white" href="#" [routerLink]="[menuItem.path]">
                     <p>{{menuItem.title}} </p>
                 </a>
@@ -76,8 +77,8 @@
 
             </ul>
         </div>
-        <button class="navbar-toggler show-menu-btn" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler show-menu-btn" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>

@@ -3,10 +3,6 @@
     padding: 0;
 }
 
-.max-height {
-    max-height: 30%;
-}
-
 .bg-blue {
     background: #005c85;
 }
@@ -16,9 +12,4 @@
   .sidebar {
     display: none;
   }
-
-}
-
-.wrapper {
-    height: 100%;
 }

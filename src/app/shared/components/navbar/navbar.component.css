@@ -71,3 +71,12 @@
         display: none;
     }
 }
+
+.navbar {
+    overflow:auto;
+}
+
+.btns {
+    float:right;
+}
+

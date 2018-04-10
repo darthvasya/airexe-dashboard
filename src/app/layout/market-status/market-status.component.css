@@ -4,3 +4,13 @@
     height: 99%;
     /* margin-left: -8%; */
 }
+
+.height {
+    height: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+    .iframe {
+        height: 85vh;
+    }
+}

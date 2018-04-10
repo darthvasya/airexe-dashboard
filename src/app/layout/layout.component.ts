@@ -17,7 +17,6 @@ export class LayoutComponent implements OnInit {
         if (document.body.clientWidth < 991) {
             this.css_class_wrapper = 'col-12';
             this.css_class_sidebar = 'd-none';
-            console.log(this.css_class_sidebar);
         } else {
             this.css_class_wrapper = 'col-10';
             this.css_class_sidebar = '';

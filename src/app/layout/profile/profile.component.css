@@ -6,8 +6,8 @@
 }
 
 .profile {
+    padding: 40px;
     margin-top: 20px;
-    height: 1080px;
 }
 
 .btn-blue {
@@ -28,4 +28,11 @@
 
 .btn-success {
     background: #28a745;
+}
+
+
+@media only screen and (max-width: 991px) {
+    .profile {
+        height: 86vh;
+    }
 }
